@@ -13,10 +13,10 @@ function Faq(props) {
     return (
         <div>
             <div className="faqBox mt-5">
-                <h4 className="text-center ctatext">
+                <h2 className="text-center ctatext">
                     {lang === 'English' ? "FREQUENT QUESTIONS" : "PREGUNTAS FRECUENTES"}
 
-                </h4>
+                </h2>
                 <div className="faqs">
                     {
                         lang === 'English' ?

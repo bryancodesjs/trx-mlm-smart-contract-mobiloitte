@@ -3,7 +3,7 @@ import Counter from './Counter'
 import Faq from './Faq'
 import Features from './Features'
 import Matrix from './Matrix'
-import logo_banner from '../../assets/img/logo_banner.png'
+import logo_banner from '../../assets/img/xtronlong.png'
 import { useHistory } from 'react-router-dom';
 
 function LandingMian(props) {
@@ -35,10 +35,10 @@ function LandingMian(props) {
                     {lang === 'English' ? "Contract address" : "Direccion del contrato"} : <a target="_blank" href={`https://shasta.tronscan.org/#/contract/${process.env.REACT_APP_CONTRACT_ADDRESS}/code`}>{process.env.REACT_APP_CONTRACT_ADDRESS}</a></p>
                 <div className="heading-content text-center">
                     <img src={logo_banner} id="logohead" className="mt-5" alt="logo_banner" />
-                    <h4 className="mt-5 whitext heading-title"><strong>
-                        {lang === 'English' ? "THE FIRST INTELLIGENT CONTRACT" : "EL PRIMER CONTRATO INTELIGENTE"}</strong></h4>
-                    <h4 className="whitext lightweight">
-                        {lang === 'English' ? "100% decentralized and independent" : "100% descentralizado e independiente"}</h4>
+                    <h1 className="mt-5 whitext heading-title"><strong>
+                        {lang === 'English' ? "THE FIRST SMART CONTRACT" : "EL PRIMER CONTRATO INTELIGENTE"}</strong></h1>
+                    <h2 className="whitext lightweight">
+                        {lang === 'English' ? "100% decentralized and independent" : "100% descentralizado e independiente"}</h2>
                     <div className="mt-5">
                         <button className="btn btn-success custombtn" onClick={() => navigateTo('/registration')}>
                             {lang === 'English' ? "REGISTER" : "REGISTRO"}</button>

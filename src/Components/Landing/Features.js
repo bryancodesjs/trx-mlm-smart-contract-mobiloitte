@@ -5,13 +5,13 @@ function Features(props) {
     let lang = props.lang
     return (
         <div className="container text-center mt-5" id="features">
-            <h4 className="whitext heading-sub-title">
+            <h2 className="whitext heading-sub-title">
                 {lang === 'English' ? "International community" : "Comunidad Internacional"}
-            </h4>
-            <h4 className="ctatext heading-sub-title">
+            </h2>
+            <h2 className="ctatext heading-sub-title">
                 {lang === 'English' ? "Decentralized Global Ecosystem" : "Ecosistema Global Descentralizado"}
 
-            </h4>
+            </h2>
             <p id="subtitle">
                 {lang === 'English' ?
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab et minima explicabo dolorem, vero exercitationem doloremque aliquam inventore accusamus pariatur."
@@ -21,12 +21,12 @@ function Features(props) {
             </p>
             <div className="features_wrap mt-5">
                 <div className="features_box">
-                    <FaBolt size={50} />
+                    <FaBolt size={50} color={'#fff'}/>
                     <br /><br />
-                    <h4><strong>
+                    <h2 className="ctatext"><strong>
                         {lang === 'English' ? "INSTANT" : "INSTANTANEO"}
 
-                    </strong></h4>
+                    </strong></h2>
                     <p className="text-justify">
                         {lang === 'English' ? "The contract delivers your benefits immediately and directly to your private wallet."
                             :
@@ -36,12 +36,12 @@ function Features(props) {
                     </p>
                 </div>
                 <div className="features_box">
-                    <FaUniversity size={50} />
+                    <FaUniversity size={50} color={'#fff'}/>
                     <br /><br />
-                    <h4><strong>
+                    <h2 className="ctatext"><strong>
                         {lang === 'English' ? "UNALTERABLE" : "INALTERABLE"}
 
-                    </strong></h4>
+                    </strong></h2>
                     <p className="text-justify">
                         {lang === 'English' ?
                             "Once it has been deployed on the Tron blockchain, it is impossible to tamper with or tamper with."
@@ -51,12 +51,12 @@ function Features(props) {
                     </p>
                 </div>
                 <div className="features_box">
-                    <FaArrowsAlt size={50} />
+                    <FaArrowsAlt size={50} color={'#fff'}/>
                     <br /><br />
-                    <h4><strong>
+                    <h2 className="ctatext"><strong>
                         {lang === 'English' ? "DECENTRALIZED" : "DECENTRALIZADO"}
 
-                    </strong></h4>
+                    </strong></h2>
                     <p className="text-justify">
                         {lang === 'English' ?
                             "The contract does not require or permit a central authority; all participants have the same rights."

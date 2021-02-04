@@ -5,12 +5,12 @@ function Matrix(props) {
     return (
         <div className="container mt-5" id="matrix">
             <div className="matrix_title text-center">
-                <h4 className="ctatext heading-title">
+                <h2 className="ctatext">
                     {lang === 'English' ? "COMMISSIONS SYSTEM" : "SISTEMA DE COMISIONES"}
-                </h4>
-                <h4 className="whitext heading-title">
+                </h2>
+                <h2 className="whitext heading-title">
                     {lang === 'English' ? "KNOW THE M1 AND M2 MATRICES" : "CONOCE LAS MATRICES M1 Y M2"}
-                </h4>
+                </h2>
             </div>
             <div className="matrix_boxes mt-5">
                 <div className="matrix_box" id="boxone">

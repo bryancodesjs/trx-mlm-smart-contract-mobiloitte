@@ -1,15 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@media screen and (max-width:500px ) {
+  #logohead {
+    width: 300px !important;
+  }
+}
+/* GLOBAL STANDARDS */
+:root {
+  --purple-3:#1e1e58;
+}
 body {
   margin: 0px !important;
   height: 100% !important;
   background-color: #010129 !important;
   background: url(./assets/img/overlay.svg) no-repeat fixed center;
   background-size: cover;
+  font-family: 'Rajdhani', sans-serif !important;
 }
+h1 {
+  font-size: 56px !important;
+}
+h2 {
+  font-size: 36px !important;
+}
+h3 {
+  font-size: 26px !important;
+}
+h4 {
+  font-size: 20px !important;
+}
+h5 {
+  font-size: 18px !important;
+}
+p {
+  font-size: 20px !important;
+}
+/* GLOBAL STANDARDS */
 #globalwrap {
   
   /* background-color: #001029;*/
   /* background-color:#0d0d0d;*/
-  font-family: "Overpass", sans-serif;
+  /*font-family: "Overpass", sans-serif;*/
   height: 100vh;
 }
 #backofficewrap {
@@ -18,7 +48,7 @@ body {
   background-color: #010129;
   /* background-color: #001029;*/
   /* background-color:#0d0d0d;*/
-  font-family: "Overpass", sans-serif;
+  /*font-family: "Overpass", sans-serif;*/
   margin: 0px;
   overflow: hidden;
   height: 100vh;
@@ -45,7 +75,6 @@ body {
 }
 
 .heading-title {
-  font-size: 3vw;
   font-weight: bold;
 }
 
@@ -60,10 +89,10 @@ body {
 
 .custombtn {
   min-width: 200px;
-  min-height: 75px;
+  min-height: 60px;
   margin: 10px;
   border-radius: 40px !important;
-  font-size: 1.5vw !important;
+  font-size: 20px !important;
   font-weight: bold !important;
 }
 .ctatext {
@@ -76,17 +105,16 @@ body {
 }
 #subtitle {
   color: #7cbc8c;
-  font-size: 1.2vw;
 }
 .features_wrap {
   display: flex;
-  flex-direction: row;
-
-  justify-content: space-between;
-  max-width: 700px;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
 }
 .features_box {
-  max-width: 200px;
+  max-width: 250px;
   margin: 20px;
 }
 .features_box p {
@@ -95,7 +123,6 @@ body {
 .features_box h4 {
   color: #35ff69;
   text-transform: uppercase;
-  font-size: 16px;
 }
 .features_box i {
   margin: 20px;
@@ -104,13 +131,15 @@ body {
 
 #counter {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  max-width: 700px;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .counter_box {
   text-align: center;
+  margin: 30px 20px;
 }
 
 .counter_box h4 {
@@ -143,8 +172,9 @@ body {
   border-radius: 7px;
   /*box-shadow: 1px 2px 4px rgba(0,0,0,.3);*/
 }
-faqBox {
+.faqBox {
   max-width: 700px;
+  margin: auto;
 }
 .box .heading {
   /*background: #7800CF;*/
@@ -167,7 +197,7 @@ faqBox {
 }
 
 details {
-  background: #001029;
+  background: var(--purple-3);
   padding: 10px 20px;
   border-radius: 7px;
   margin-top: 20px;
