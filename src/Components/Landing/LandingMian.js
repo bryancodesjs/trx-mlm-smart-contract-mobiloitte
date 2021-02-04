@@ -51,7 +51,7 @@ function LandingMian(props) {
                 </div>
             </div>
             <Features lang={lang} />
-            <Counter lang={lang} />
+            {/*<Counter lang={lang} />*/}
             <br /><br /><br />
             <Matrix lang={lang} />
             <Faq lang={lang} />

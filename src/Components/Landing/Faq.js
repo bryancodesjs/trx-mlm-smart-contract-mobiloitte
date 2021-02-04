@@ -14,7 +14,7 @@ function Faq(props) {
         <div>
             <div className="faqBox mt-5">
                 <h2 className="text-center ctatext">
-                    {lang === 'English' ? "FREQUENT QUESTIONS" : "PREGUNTAS FRECUENTES"}
+                    {lang === 'English' ? "FREQUENTLY ASKED QUESTIONS" : "PREGUNTAS FRECUENTES"}
 
                 </h2>
                 <div className="faqs">

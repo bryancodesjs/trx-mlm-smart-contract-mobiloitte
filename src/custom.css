@@ -50,7 +50,7 @@ p {
   /* background-color:#0d0d0d;*/
   /*font-family: "Overpass", sans-serif;*/
   margin: 0px;
-  overflow: hidden;
+  overflow-y: scroll;
   height: 100vh;
 }
 #address {
@@ -175,6 +175,7 @@ p {
 .faqBox {
   max-width: 700px;
   margin: auto;
+  padding-bottom: 150px !important;
 }
 .box .heading {
   /*background: #7800CF;*/
@@ -201,9 +202,7 @@ details {
   padding: 10px 20px;
   border-radius: 7px;
   margin-top: 20px;
-  font-family: "Overpass", sans-serif;
-  font-weight: 600;
-  font-size: 16px;
+  
   letter-spacing: 1px;
   cursor: pointer;
   color: white;
@@ -211,7 +210,7 @@ details {
 
 details p {
   margin-top: 10px;
-  font-weight: 300;
+  
 }
 .subtext {
   color: #3434d5;
@@ -219,6 +218,8 @@ details p {
 details summary {
   outline: none;
   color: #35ff69;
+  FONT-SIZE: 24PX;
+  font-weight: 600;
 }
 /*USER DEFINITION WRAP*/
 .userdefinition {

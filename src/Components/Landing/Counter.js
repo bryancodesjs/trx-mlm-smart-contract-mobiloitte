@@ -4,7 +4,7 @@ function Counter(props) {
     let lang = props.lang
 
     return (
-        <div className="container mt-5" id="counter">
+         <div className="container mt-5" id="counter">
             <div className="counter_box">
                 <h4>
                     {lang === 'English' ? "Users" : "Usuarios"}
