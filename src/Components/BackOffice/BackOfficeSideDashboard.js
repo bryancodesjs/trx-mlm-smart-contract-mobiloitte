@@ -141,7 +141,7 @@ function BackOfficeSideDashboard(props) {
                 <h2 className="text-left ctatext">
                     $ {getFlooredFixed(((backofficeContextL.backofficeDataM.total5x + x12balanceTRX) * backofficeContextL.backofficeDataM.usdValue), 2)} USD
                 </h2>
-                <h4 className="subtext earning_amount text-left">${backofficeContextL.backofficeDataM.total5x + x12balanceTRX} TRX <img src={tron32x} className="tron_currency" alt="tron32x" /></h4>
+                <h4 className="subtext earning_amount text-left">{backofficeContextL.backofficeDataM.total5x + x12balanceTRX} TRX <img src={tron32x} className="tron_currency" alt="tron32x" /></h4>
                 <hr className="custom_hr" />
                 <div className="matrix_earnings" style={{ paddingTop: "0" }}>
                     {/* <img className="matrix_logo" src={x5matrix} alt="x5matrix" /> */}
