@@ -4,7 +4,7 @@ import BackOfficeStatusFor12x from './BackOfficeStatusFor12x'
 import BackOfficeStatusFor5x from './BackOfficeStatusFor5x'
 import xtronLogo from '../../assets/img/xtronlong.png'
 import { Link } from 'react-router-dom';
-import { FaPowerOff } from "react-icons/fa";
+import { FaPowerOff, FaRegFileAlt, FaTelegramPlane } from "react-icons/fa";
 
 const initialState = {
     total5x: 0,
@@ -59,6 +59,7 @@ const reducer = (state, action) => {
 }
 
 function BackOfficeMain(props) {
+    
     const [backofficeData, dispatch] = useReducer(reducer, initialState)
     let lang = props.location && props.location.state && props.location.state.lang
     lang = typeof lang === "undefined" ? "English" : "Spanish"
@@ -72,10 +73,11 @@ function BackOfficeMain(props) {
         })();
     }, []);
 
+
     return (
         <BackofficeContext.Provider value={{ backofficeDataM: backofficeData, dispatchM: dispatch }}>
             <div className="" id="backofficewrap">
-                <div className="navig d-flex justify-content-center">
+                <div className="navig d-flex justify-content-center shadow">
                     <div className="container d-flex justify-content-between align-items-center">
                     <Link to={{
                         pathname: "/",
@@ -83,7 +85,31 @@ function BackOfficeMain(props) {
                     }} className="logo-payment-link">
                         <img className="logo-payment-nav" src={xtronLogo} alt="logo xtron" />
                     </Link>
-                    <FaPowerOff size={30} color={'#f33f3f'}/>
+                    <div className="action-links">
+                        
+
+                    <a rel="noreferrer" target="_blank" className="navicon" href="https://t.me/xtronoficial"><FaTelegramPlane size={30} /> <span className="naviconTXT">News</span></a>
+                        
+                    
+
+                    <Link to={{
+                        pathname: "/tutorial",
+                        state: lang
+                    }} className="navicon">
+                        <FaRegFileAlt size={30} /> <span className="naviconTXT">Tutorial</span>
+                    </Link>
+
+                    
+
+                    <Link to={{
+                        pathname: "/",
+                        state: lang
+                    }} className="logo-payment-link">
+                        <FaPowerOff size={30} color={'#f33f3f'}/>
+                    </Link>
+
+
+                    </div>
                     </div>
                 </div>
                 <div className="text-center logo-payment-wrap" style={{ marginTop: "0px" }}>

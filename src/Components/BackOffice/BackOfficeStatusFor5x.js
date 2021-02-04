@@ -27,10 +27,11 @@ function BackOfficeStatusFor5x(props) {
                     <SubPart5X level={12} ammount={"409600"} lang={props.lang && props.lang} />
                 </div>
                 <div className="Tips">
-                    <div className="d-flex align-items-center tip"><div className="position mini-position position_active" /> This means this and that</div>
-                    <div className="d-flex align-items-center tip"><div className="position mini-position" /> This means this and that</div>
-                    <div className="d-flex align-items-center tip"><FaUsers color="#35FF69" size={25} /> Users you have earned from.</div>
-                    <div className="d-flex align-items-center tip"><FiRefreshCcw color="#35FF69" size={25} /> Completed cycles</div>
+                    <div className="d-flex align-items-center tip"><div className="mr10 position mini-position position_active" /> You have earned commission from this slot.</div>
+                    <div className="d-flex align-items-center tip"><div className="mr10 position mini-position" /> Available slot.</div>
+                    <div className="d-flex align-items-center tip"><div className="mr10 position mini-position position_reset" /> Once this position is filled, all slots will clear out.</div>
+                    <div className="d-flex align-items-center tip"><FaUsers className="mr10" color="#35FF69" size={25} /> Users you have earned from.</div>
+                    <div className="d-flex align-items-center tip"><FiRefreshCcw className="mr10" color="#35FF69" size={25} /> How many times you have cleared this slot.</div>
                 </div>
             </div>
         </>

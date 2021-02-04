@@ -3,6 +3,15 @@
   #logohead {
     width: 300px !important;
   }
+  .naviconTXT {
+    display: none;
+  }
+  .navicon svg {
+    width:18px !important;
+  }
+  .action-links a {
+    margin: 0px 7px !important;
+  }
 }
 /* GLOBAL STANDARDS */
 :root {
@@ -418,6 +427,24 @@ details summary {
 }
 .tip {
   margin-bottom: 10px;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.action-links a {
+  margin: 0px 10px;
+  color:#fff;
+  font-size: 22px;
+}
+.action-links a:hover {
+  text-decoration: none;
+  color:#623cea;
+}
+.navig {
+  background-color: #0d0d40;
+}
+.navicon svg {
+  width:12px;
 }
 .Tips {
   color: #6262c5;
