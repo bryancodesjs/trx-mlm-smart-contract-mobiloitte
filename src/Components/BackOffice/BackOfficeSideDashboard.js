@@ -128,9 +128,9 @@ function BackOfficeSideDashboard(props) {
                         {
                             lang === 'English'
                                 ?
-                                <h4 className="whitext">USER {parseInt(UserId)}</h4>
+                                <h3 className="whitext">MY ID: {parseInt(UserId)}</h3>
                                 :
-                                <h4 className="whitext">USUARIA {parseInt(UserId)}</h4>
+                                <h3 className="whitext">MI ID: {parseInt(UserId)}</h3>
                         }
 
                     </div>
@@ -141,28 +141,28 @@ function BackOfficeSideDashboard(props) {
                 <h2 className="text-left ctatext">
                     $ {getFlooredFixed(((backofficeContextL.backofficeDataM.total5x + x12balanceTRX) * backofficeContextL.backofficeDataM.usdValue), 2)} USD
                 </h2>
-                <h4 className="subtext earning_amount text-left">{backofficeContextL.backofficeDataM.total5x + x12balanceTRX} TRX <img src={tron32x} className="tron_currency" alt="tron32x" /></h4>
+                <h2 className="subtext earning_amount text-left">{backofficeContextL.backofficeDataM.total5x + x12balanceTRX} TRX <img src={tron32x} className="tron_currency" alt="tron32x" /></h2>
                 <hr className="custom_hr" />
                 <div className="matrix_earnings" style={{ paddingTop: "0" }}>
                     {/* <img className="matrix_logo" src={x5matrix} alt="x5matrix" /> */}
                     <div style={{ display: "flex" }}>
                         <img className="matrix_logo" src={x5matrix} alt="x5matrix" />
                         <div className="userinfo text-right" style={{ marginTop: "20%" }}>
-                            <h4 className="whitext">{parseInt(partnersCount)} <FaUsers color="#35FF69" /></h4>
+                            <h3 className="whitext">{parseInt(partnersCount)} <FaUsers color="#35FF69" /></h3>
                         </div>
                     </div>
 
                     {
                         lang === 'English' ?
-                            <h4 className="whitext">Earnings</h4>
+                            <h3 className="whitext">Earnings</h3>
                             :
-                            <h4 className="whitext">Ganancias</h4>
+                            <h3 className="whitext">Ganancias</h3>
                     }
 
                     <div className="earning_amount_container">
-                        <h5 className="ctatext earning_amount">$ {getFlooredFixed((backofficeContextL.backofficeDataM.total5x * backofficeContextL.backofficeDataM.usdValue), 2)} USD</h5>
+                        <h2 className="ctatext earning_amount">$ {getFlooredFixed((backofficeContextL.backofficeDataM.total5x * backofficeContextL.backofficeDataM.usdValue), 2)} USD</h2>
                     </div>
-                    <h5 className="earning_amount_trx subtext">{backofficeContextL.backofficeDataM.total5x} TRX  <img src={tron32x} className="tron_currency" alt="tron32x" /></h5>
+                    <h2 className="earning_amount_trx subtext">{backofficeContextL.backofficeDataM.total5x} TRX  <img src={tron32x} className="tron_currency" alt="tron32x" /></h2>
                 </div>
                 <hr className="custom_hr" />
                 <div className="matrix_earnings" style={{ paddingTop: "0" }}>
@@ -170,32 +170,32 @@ function BackOfficeSideDashboard(props) {
                     <div style={{ display: "flex" }}>
                         <img className="matrix_logo" src={x12matrix} alt="x12matrix" />
                         <div className="userinfo text-right" style={{ marginTop: "20%" }}>
-                            <h4 className="whitext">{parseInt(backofficeContextL.backofficeDataM.partnerCountM2)} <FaUsers color="#35FF69" /></h4>
+                            <h3 className="whitext">{parseInt(backofficeContextL.backofficeDataM.partnerCountM2)} <FaUsers color="#35FF69" /></h3>
                         </div>
                     </div>
                     {
                         lang === 'English' ?
-                            <h4 className="whitext">Earnings</h4>
+                            <h3 className="whitext">Earnings</h3>
                             :
-                            <h4 className="whitext">Ganancias</h4>
+                            <h3 className="whitext">Ganancias</h3>
                     }
 
                     <div className="earning_amount_container">
-                        <h5 className="ctatext earning_amount">$ {getFlooredFixed((x12balanceTRX * backofficeContextL.backofficeDataM.usdValue), 2)} USD</h5>
+                        <h2 className="ctatext earning_amount">$ {getFlooredFixed((x12balanceTRX * backofficeContextL.backofficeDataM.usdValue), 2)} USD</h2>
                     </div>
-                    <h5 className="earning_amount_trx subtext">{x12balanceTRX} TRX  <img src={tron32x} className="tron_currency" alt="tron32x" /></h5>
+                    <h2 className="earning_amount_trx subtext">{x12balanceTRX} TRX  <img src={tron32x} className="tron_currency" alt="tron32x" /></h2>
                 </div>
             </div>
             <div className="affiliate_wrap xwrap">
                 <div className="affiliate_heading">
                     {
                         lang === 'English' ?
-                            <h4 className="ctatext">Affiliate Link</h4>
+                            <h3 className="ctatext">Affiliate Link</h3>
                             :
-                            <h4 className="ctatext">Enlace de afiliado</h4>
+                            <h3 className="ctatext">Enlace de afiliado</h3>
                     }
 
-                    <h4 className="whitext">{parseInt(partnersCount)} <FaUsers color="#35FF69" /></h4>
+                    <h3 className="whitext">{parseInt(partnersCount)} <FaUsers color="#35FF69" /></h3>
                 </div>
                 <div className="link_container">
                     {/* <input type="text" value={`${process.env.REACT_APP_URL}/#/registration/${parseInt(UserId)}`} id="refLink" readOnly /> */}
@@ -206,18 +206,18 @@ function BackOfficeSideDashboard(props) {
             <div className="wallet_wrap xwrap">
                 {
                     lang === 'English' ?
-                        <h5 className="ctatext">Your TRX Wallet:</h5>
+                        <h3 className="ctatext">My TRX Wallet:</h3>
                         :
-                        <h5 className="ctatext">Su billetera TRX:</h5>
+                        <h3 className="ctatext">Mi billetera de TRX:</h3>
                 }
                 <p className="whitext">{tronAccount}</p>
             </div>
             <div className="contract_wrap xwrap">
                 {
                     lang === 'English' ?
-                        <h5 className="ctatext">Smart Contract Address :</h5>
+                        <h3 className="ctatext">Smart Contract Address :</h3>
                         :
-                        <h5 className="ctatext">Dirección de contrato inteligente:</h5>
+                        <h3 className="ctatext">Dirección de contrato inteligente:</h3>
                 }
                 <a href={`https://shasta.tronscan.org/#/contract/${process.env.REACT_APP_CONTRACT_ADDRESS}/code`} target="_blank"> <p className="whitext">{process.env.REACT_APP_CONTRACT_ADDRESS}</p></a>
             </div>

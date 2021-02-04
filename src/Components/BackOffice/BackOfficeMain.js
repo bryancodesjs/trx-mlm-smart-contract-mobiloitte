@@ -4,6 +4,7 @@ import BackOfficeStatusFor12x from './BackOfficeStatusFor12x'
 import BackOfficeStatusFor5x from './BackOfficeStatusFor5x'
 import xtronLogo from '../../assets/img/xtronlong.png'
 import { Link } from 'react-router-dom';
+import { FaPowerOff } from "react-icons/fa";
 
 const initialState = {
     total5x: 0,
@@ -75,14 +76,14 @@ function BackOfficeMain(props) {
         <BackofficeContext.Provider value={{ backofficeDataM: backofficeData, dispatchM: dispatch }}>
             <div className="" id="backofficewrap">
                 <div className="navig d-flex justify-content-center">
-                    <div className="container d-flex justify-content-between">
+                    <div className="container d-flex justify-content-between align-items-center">
                     <Link to={{
                         pathname: "/",
                         state: lang
                     }} className="logo-payment-link">
                         <img className="logo-payment-nav" src={xtronLogo} alt="logo xtron" />
                     </Link>
-                    <div>Logout</div>
+                    <FaPowerOff size={30} color={'#f33f3f'}/>
                     </div>
                 </div>
                 <div className="text-center logo-payment-wrap" style={{ marginTop: "0px" }}>

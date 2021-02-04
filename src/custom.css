@@ -36,19 +36,13 @@ p {
 }
 /* GLOBAL STANDARDS */
 #globalwrap {
-  
-  /* background-color: #001029;*/
-  /* background-color:#0d0d0d;*/
-  /*font-family: "Overpass", sans-serif;*/
   height: 100vh;
 }
 #backofficewrap {
-  /* background: url(./img/wpaper.jpg) no-repeat fixed center; */
+  
   background-size: cover;
-  background-color: #010129;
-  /* background-color: #001029;*/
-  /* background-color:#0d0d0d;*/
-  /*font-family: "Overpass", sans-serif;*/
+  background-color: #090931;
+  
   margin: 0px;
   overflow-y: scroll;
   height: 100vh;
@@ -295,7 +289,7 @@ details summary {
 .matrix_earnings {
   /* border: 2px solid #35ff60; */
   /* margin-bottom: 40px; */
-  padding: 20px;
+  
   border-radius: 9px;
 }
 .custom_hr {
@@ -318,6 +312,11 @@ details summary {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 80px;
+}
+.mini-position {
+  width: 25px !important;
+  height: 25px !important;
 }
 .boxes_wraper_x12 {
   /*X12 MATRIX WRAPPER*/
@@ -345,7 +344,7 @@ details summary {
 .basket_btn {
   width: 200px;
   height: 40px;
-  font-size: 16px !important;
+  font-size: 20px !important;
 }
 
 .basket_active {
@@ -416,6 +415,13 @@ details summary {
   border-radius: 5px;
   z-index: 2;
   background-color: #0d0d40;
+}
+.tip {
+  margin-bottom: 10px;
+}
+.Tips {
+  color: #6262c5;
+    font-size: 20px;
 }
 .position_active {
   background-color: #35ff69;
