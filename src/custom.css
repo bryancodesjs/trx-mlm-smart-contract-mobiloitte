@@ -1,16 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@media screen and (max-width:767px ) {
+  .naviconTXT {
+    display: none;
+  }
+}
 @media screen and (max-width:500px ) {
   #logohead {
     width: 300px !important;
-  }
-  .naviconTXT {
-    display: none;
   }
   .navicon svg {
     width:18px !important;
   }
   .action-links a {
     margin: 0px 7px !important;
+  }
+}
+@media screen and (max-width:364px ) {
+  .show-wrap .show-img {
+    width: 250px;
   }
 }
 /* GLOBAL STANDARDS */
@@ -69,8 +76,8 @@ p {
 #logohead {
   max-width: 450px;
 }
-.heading-content {
-  padding-top: 140px;
+.heading-content {/*
+  padding-top: 140px;*/
   padding-bottom: 140px;
 }
 .whitext {
@@ -156,18 +163,39 @@ p {
 }
 .matrix_boxes {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
+}
+.show-wrap {
+  color: white;
+    height: 370px;
+}
+.show-text {
+  padding: 20px;
+    position: absolute;
+    max-width: 300px;
+    transform: translate(0px, -67px);
 }
 .matrix_box {
   width: 400px;
   height: 300px;
-
-  /* background-color: #001029; */
   border-radius: 8px;
   margin: 10px;
 }
-
+.show-matrix {
+  overflow: hidden;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    background-color:#0d0d40;
+}
+.show-matrix-label {
+  position: absolute;
+  transform: translate(10px, 0px);
+    width: 70px;
+    z-index: 0;
+}
 .box {
   width: 750px;
   margin: auto;

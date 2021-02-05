@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from 'react'
 import BackOfficeSideDashboard from './BackOfficeSideDashboard'
 import BackOfficeStatusFor12x from './BackOfficeStatusFor12x'
 import BackOfficeStatusFor5x from './BackOfficeStatusFor5x'
+import MyNav from './Nav'
 import xtronLogo from '../../assets/img/xtronlong.png'
 import { Link } from 'react-router-dom';
 import { FaPowerOff, FaRegFileAlt, FaTelegramPlane } from "react-icons/fa";
@@ -77,41 +78,8 @@ function BackOfficeMain(props) {
     return (
         <BackofficeContext.Provider value={{ backofficeDataM: backofficeData, dispatchM: dispatch }}>
             <div className="" id="backofficewrap">
-                <div className="navig d-flex justify-content-center shadow">
-                    <div className="container d-flex justify-content-between align-items-center">
-                    <Link to={{
-                        pathname: "/",
-                        state: lang
-                    }} className="logo-payment-link">
-                        <img className="logo-payment-nav" src={xtronLogo} alt="logo xtron" />
-                    </Link>
-                    <div className="action-links">
-                        
-
-                    <a rel="noreferrer" target="_blank" className="navicon" href="https://t.me/xtronoficial"><FaTelegramPlane size={30} /> <span className="naviconTXT">News</span></a>
-                        
-                    
-
-                    <Link to={{
-                        pathname: "/tutorial",
-                        state: lang
-                    }} className="navicon">
-                        <FaRegFileAlt size={30} /> <span className="naviconTXT">Tutorial</span>
-                    </Link>
-
-                    
-
-                    <Link to={{
-                        pathname: "/",
-                        state: lang
-                    }} className="logo-payment-link">
-                        <FaPowerOff size={30} color={'#f33f3f'}/>
-                    </Link>
-
-
-                    </div>
-                    </div>
-                </div>
+                <MyNav />
+                <h2 className="text-center whitext mt-5">Dashboard</h2>
                 <div className="text-center logo-payment-wrap" style={{ marginTop: "0px" }}>
                     {/*<Link to={{
                         pathname: "/",

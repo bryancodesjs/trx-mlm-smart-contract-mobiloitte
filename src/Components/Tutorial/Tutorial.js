@@ -9,16 +9,14 @@ import upgrade from '../../assets/img/6th.png'
 import Simult from '../../assets/img/SIMULT.png'
 import { FaUsers, FaFacebook, FaTwitter, FaRegCopy } from "react-icons/fa";
 import xtronLogo from '../../assets/img/xtronlong.png'
+import MyNav from '../BackOffice/Nav'
 import { Link } from 'react-router-dom';
 
 function Tutoril() {
     return (
         <div class="" id="backofficewrap">
-            <div className="text-center logo-payment-wrap" style={{ marginTop: "20px" }}>
-                <Link to="/" className="logo-payment-link">
-                    <img className="logo-payment" src={xtronLogo} alt="logo xtron" />
-                </Link>
-            </div>
+            <MyNav />
+            <h2 className="text-center whitext mt-5">Tutorial</h2>
             <div class="container">
                 <div class="row " id="backoffice_row">
                     <div class="col-lg-3">
