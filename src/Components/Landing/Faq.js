@@ -62,9 +62,21 @@ function Faq(props) {
 
                         {
                             lang === 'English' ?
-                                <p className="text">To be part of the XTRON community you only need to install a wallet on your smartphone, tablet or PC.<br /><br />For mobile devices we recommend <a href="https://wallet.coinbase.com">Coinbase</a><br />For computers we recommend <a href="https://metamask.io">Metamask</a></p>
+                                <p className="text">To be part of the XTRON community you only need to install a wallet on your smartphone, tablet or PC.
+                                <br /><br />
+                                For mobile Android devices: <a target="_blank" href="https://play.google.com/store/apps/details?id=com.tronlinkpro.wallet">Tronlink Android</a>
+                                <br />
+                                For mobile iOS devices: <a target="_blank" href="https://apps.apple.com/us/app/tronlink-trx-btt-wallet/id1453530188">Tronlink iOS</a>
+                                <br />
+                                For PC (Chrome Extension): <a target="_blank" href="https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec/related">Tronlink Chrome</a></p>
                                 :
-                                <p className="text">Para formar parte de la comunidad de XTRON solo necesitas instalar una wallet en tu smartphone, tablet o PC.<br /><br />Para dispositivos moviles recomendamos <a href="https://wallet.coinbase.com">Coinbase</a><br />Para computadoras recomendamos <a href="https://metamask.io">Metamask</a></p>
+                                <p className="text">Para formar parte de la comunidad de XTRON solo necesitas instalar una wallet en tu smartphone, tablet o PC.
+                                <br /><br />
+                                Para móviles Android: <a target="_blank" href="https://play.google.com/store/apps/details?id=com.tronlinkpro.wallet">Tronlink Android</a>
+                                <br />
+                                Para móviles iOS: <a target="_blank" href="https://apps.apple.com/us/app/tronlink-trx-btt-wallet/id1453530188">Tronlink iOS</a>
+                                <br />
+                                Para PC (Chrome Extension): <a target="_blank" href="https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec/related">Tronlink Chrome</a></p>
                         }
                     </details>
                     {

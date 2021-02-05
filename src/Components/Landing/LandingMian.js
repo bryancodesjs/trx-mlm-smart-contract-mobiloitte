@@ -4,6 +4,7 @@ import Faq from './Faq'
 import Features from './Features'
 import Matrix from './Matrix'
 import logo_banner from '../../assets/img/xtronlong.png'
+import tron32x from '../../assets/img/tron32x.png'
 import { useHistory } from 'react-router-dom';
 
 function LandingMian(props) {
@@ -35,8 +36,10 @@ function LandingMian(props) {
                     {lang === 'English' ? "Contract address" : "Direccion del contrato"} : <a target="_blank" href={`https://shasta.tronscan.org/#/contract/${process.env.REACT_APP_CONTRACT_ADDRESS}/code`}>{process.env.REACT_APP_CONTRACT_ADDRESS}</a></p>
                 <div className="heading-content text-center">
                     <img src={logo_banner} id="logohead" className="mt-5" alt="logo_banner" />
+                    <br />
+                    <img src={tron32x} className="tron_currency-2" alt="tron32x" />
                     <h1 className="mt-5 whitext heading-title"><strong>
-                        {lang === 'English' ? "THE FIRST SMART CONTRACT" : "EL PRIMER CONTRATO INTELIGENTE"}</strong></h1>
+                        {lang === 'English' ? "HYBRID MARKETING SMART CONTRACT" : "CONTRATO INTELIGENTE DE MARKETING HÍBRIDO"}</strong></h1>
                     <h2 className="whitext lightweight">
                         {lang === 'English' ? "100% decentralized and independent" : "100% descentralizado e independiente"}</h2>
                     <div className="mt-5">
@@ -55,6 +58,8 @@ function LandingMian(props) {
             <br /><br /><br />
             <Matrix lang={lang} />
             <Faq lang={lang} />
+
+            <h4 className="text-center pb-5 signature">XTRON GLOBAL 2021</h4>
         </>
     )
 }

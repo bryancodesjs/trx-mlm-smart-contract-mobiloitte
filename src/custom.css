@@ -51,6 +51,15 @@ p {
   font-size: 20px !important;
 }
 /* GLOBAL STANDARDS */
+#lang {
+  background-color: #272761;
+    padding: 0px 17px;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 20px;
+
+}
 #globalwrap {
   height: 100vh;
 }
@@ -79,6 +88,12 @@ p {
 .heading-content {/*
   padding-top: 140px;*/
   padding-bottom: 140px;
+}
+.tron_currency-2 {
+  width: 35px;
+}
+.signature {
+  color:#32326c;
 }
 .whitext {
   color: white;

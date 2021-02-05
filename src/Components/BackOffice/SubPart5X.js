@@ -200,11 +200,11 @@ function SubPart5X({ level, ammount, lang }) {
                 {!isBuyVisible ?
                     <div className="reload-data">
                         <div>
-                            <span style={{ color: "white", fontSize: "1.2vw", paddingRight: 5 }}>{(5 * reinvestCount) + numberOfActiveLevels}</span>
+                            <span style={{ color: "white", fontSize: "20px", paddingRight: 5 }}>{(5 * reinvestCount) + numberOfActiveLevels}</span>
                             <FaUsers color="#35FF69" size={25} />
                         </div>
                         <div>
-                            <span style={{ color: "white", fontSize: "1.2vw", paddingRight: 5 }}>{reinvestCount}</span>
+                            <span style={{ color: "white", fontSize: "20px", paddingRight: 5 }}>{reinvestCount}</span>
                             <FiRefreshCcw color="#35FF69" size={25} />
                         </div>
 
