@@ -22,6 +22,7 @@ function copyAffiliateLink() {
 function BackOfficeSideDashboard(props) {
 
     const lang = props.lang
+       
     const backofficeContextL = useContext(BackofficeContext)
 
     const [UserId, setUserId] = useState(0)
@@ -126,7 +127,7 @@ function BackOfficeSideDashboard(props) {
                 <div className="userdefinition">
                     <div className="paymentlogo">
                         {
-                            lang === 'English'
+                            lang === "English"
                                 ?
                                 <h3 className="whitext">MY ID: {parseInt(UserId)}</h3>
                                 :

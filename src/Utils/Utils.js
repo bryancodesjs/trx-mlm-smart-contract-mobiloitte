@@ -6,7 +6,9 @@
 
 // const contract_address = "TTpGpJ1JN75ioXm8k1LhCWFEQqGbptyzAF"
 
-const contract_address = "TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp"
+//const contract_address = "TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp" real
+
+const contract_address = "TQrmGowd3HkCJrHNgDwNAsqSyfkKj6mFXc"
 
 //const contract_address = process.env.REACT_APP_CONTRACT_ADDRESS
 
