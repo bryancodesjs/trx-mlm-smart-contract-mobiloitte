@@ -32,5 +32,5 @@ jobs:
       with:
         app-name: 'xtron-shasta'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_81bdedf1b915406791e20e9bb9111af3 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_264c55ffb17a49ee8aa8d47cb6e539ed }}
         package: .
