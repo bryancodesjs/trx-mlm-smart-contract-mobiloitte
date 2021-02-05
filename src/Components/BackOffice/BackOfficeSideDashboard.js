@@ -128,10 +128,10 @@ function BackOfficeSideDashboard(props) {
                     <div className="paymentlogo">
                         {
                             lang === "English"
-                                ?
-                                <h3 className="whitext">MY ID: {parseInt(UserId)}</h3>
+                                ? 
+                                <h3 className="whitext">MY ID: <span className="ctatext">{parseInt(UserId)}</span></h3>
                                 :
-                                <h3 className="whitext">MI ID: {parseInt(UserId)}</h3>
+                                <h3 className="whitext">MI ID: <span className="ctatext">{parseInt(UserId)}</span></h3>
                         }
 
                     </div>
@@ -139,6 +139,12 @@ function BackOfficeSideDashboard(props) {
                         <h4 className="whitext">{parseInt(partnersCount)} <FaUsers color="#35FF69" /></h4>
                     </div> */}
                 </div>
+                {
+                        lang === 'English' ?
+                            <h3 className="whitext">Total Earnings</h3>
+                            :
+                            <h3 className="whitext">Ganancias Totales</h3>
+                    }
                 <h2 className="text-left ctatext">
                     $ {getFlooredFixed(((backofficeContextL.backofficeDataM.total5x + x12balanceTRX) * backofficeContextL.backofficeDataM.usdValue), 2)} USD
                 </h2>
