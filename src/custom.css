@@ -3,6 +3,19 @@
   .naviconTXT {
     display: none;
   }
+  .first-payment-img {
+    width: 440px !important;
+  }
+}
+@media (min-width:490px) and (max-width:767px ) {
+  .first-payment-img {
+    width: 440px !important;
+  }
+}
+@media (min-width:300px) and (max-width:489px ) {
+  .first-payment-img {
+    width: 290px !important;
+  }
 }
 @media screen and (max-width:500px ) {
   #logohead {
@@ -764,7 +777,7 @@ details summary {
 }
 
 .first-payment-img {
-  width: 30rem;
+  width: 600px;
 }
 
 .reload-data {
