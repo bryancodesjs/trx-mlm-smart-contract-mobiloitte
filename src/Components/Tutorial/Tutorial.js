@@ -2,15 +2,15 @@ import React from 'react'
 import tron32x from '../../assets/img/tron32x.png'
 import x5matrix from '../../assets/img/m1.png'
 import x12matrix from '../../assets/img/m2.png'
-import m1dist from '../../assets/img/m1-dist.png'
+import m1dist from '../../assets/img/m1-dist.jpg'
 import M2dist from '../../assets/img/M2-dist.jpg'
-import reinvest from '../../assets/img/reinvest.png'
-import upgrade from '../../assets/img/6th.png'
-import Simult from '../../assets/img/SIMULT.png'
+import reinvest from '../../assets/img/reinvest.jpg'
+import upgrade from '../../assets/img/6th.jpg'
+import Simult from '../../assets/img/SIMULT.jpg'
 import { FaUsers, FaFacebook, FaTwitter, FaRegCopy } from "react-icons/fa";
-import xtronLogo from '../../assets/img/xtronlong.png'
+//import xtronLogo from '../../assets/img/xtronlong.png'
 import MyNav from '../BackOffice/Nav'
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 function Tutoril() {
     return (
@@ -83,6 +83,7 @@ function Tutoril() {
                         <div class="xwrap">
                             <div class="title_container">
                                 {/* <!--<img src="./assets/img/m1.png" id="title_container_img"> --> */}
+                                
                                 <h2 class="ctatext">How does xtron's hybrid marketing works?</h2>
                                 <p class="whitext">XTRON hybrid marketing is a marketing system where you
                                 buy slots once and can make money with them indefinitely.</p>
@@ -103,7 +104,7 @@ function Tutoril() {
                                 <p class="whitext">After your first purchase, you can buy any additional slot from one matrix without having
                                 to buy the same slot from the other matrix.
                                     </p>
-                                <p class="text-center subtext"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Slots have no
+                                <p class="text-center subtext quote-yellow"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Slots have no
                                         expiration date, so once you buy a slot, it's yours forever!</p>
                                 <br />
                                 <h4 class="ctatext">M1 Slots</h4>
@@ -143,8 +144,8 @@ function Tutoril() {
                                 <p class="whitext">Upgrading is optional, but your earning potential is multiplied with every additional slot
                                 you buy. Let's look at it this way:
                                     </p>
-                                <p class="subtext text-center">You earn $5 for every person you refer to the 1st slot of the M1 matrix, but you can earn $160 for
-                                every person you refer to the 6th slot of the M1 matrix.
+                                <p class="subtext text-center">You can earn 6,400 TRX instantaneously for
+                                every person you refer to the 6th slot of the M1 matrix. That's 25,600 TRX for every cycle!
                                     </p>
                                 <img class="first-payment-img" src={upgrade} alt="xtron matrix payment 6th slot" />
                                 <br />

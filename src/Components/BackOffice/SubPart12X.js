@@ -188,7 +188,7 @@ function SubPart12X({ level, ammount, lang }) {
             <div className="box_subpositions">
                 {getSubActiveLevels}
                 {getNonSubActiveLevels}
-                <div className="subposition_refresh"></div>
+                <div className="subposition reset-bg"></div>
             </div>
             <div className="flow_lines">
                 <div className="flow_line line_one_x12"></div>

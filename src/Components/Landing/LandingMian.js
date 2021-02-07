@@ -6,6 +6,7 @@ import Matrix from './Matrix'
 import logo_banner from '../../assets/img/xtronlong.png'
 import tron32x from '../../assets/img/tron32x.png'
 import { useHistory } from 'react-router-dom';
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 function LandingMian(props) {
     const propslang = props.location && props.location.state
@@ -32,8 +33,7 @@ function LandingMian(props) {
                         <option value="Spanish">Spanish</option>
                     </select>
                 </div>
-                <p id="address">
-                    {lang === 'English' ? "Contract address" : "Direccion del contrato"} : <a target="_blank" href={`https://shasta.tronscan.org/#/contract/${process.env.REACT_APP_CONTRACT_ADDRESS}/code`}>{process.env.REACT_APP_CONTRACT_ADDRESS}</a></p>
+                
                 <div className="heading-content text-center">
                     <img src={logo_banner} id="logohead" className="mt-5" alt="logo_banner" />
                     <br />
@@ -58,7 +58,9 @@ function LandingMian(props) {
             <br /><br /><br />
             <Matrix lang={lang} />
             <Faq lang={lang} />
-
+            <p className="text-center" id="address">
+                    {lang === 'English' ? "Contract address" : "Direccion del contrato"} : <a rel="noreferrer" target="_blank" href={`https://tronscan.org/#/contract/TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp/code`}>TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp <FaExternalLinkAlt /></a>
+                    </p>
             <h4 className="text-center pb-5 signature">XTRON GLOBAL 2021</h4>
         </>
     )

@@ -21,7 +21,7 @@ function Registration(props) {
     const { id } = useParams();
     const CustomToastWithLink = () => (
         <p>
-            Please login to your tronlink account
+            Please login to your Tronlink account
         </p>
     );
 
@@ -70,7 +70,7 @@ function Registration(props) {
     }, []);
 
     const registationSubmit = async () => {
-        let warnmsg = "No actualice la página y espere mientras procesamos su pago. Esto puede tardar unos minutos."
+        let warnmsg = "Porfavor no actualice la página y espere mientras su pago es procesado. Esto puede tardar unos minutos."
 
         localStorage.removeItem('backOfficeID')
         if (backOfficeID !== '' || id !== undefined) {
@@ -78,7 +78,7 @@ function Registration(props) {
                 try {
                     SetisModalOpen(true)
                     if (lang === 'English') {
-                        warnmsg = "Please do not refresh the page and wait while we are processing your payment. This can take a few minutes."
+                        warnmsg = "Please do not refresh the page and wait while your payment is processed. This may take a few minutes."
                     }
                     toast.warn(warnmsg, {
                         position: "top-center",
@@ -114,10 +114,10 @@ function Registration(props) {
         }
         else {
             if (lang === 'English') {
-                toast.warn("Enter Refferal address")
+                toast.warn("Enter your sponsor's ID")
             }
             else {
-                toast.warn("Ingrese la dirección de referencia")
+                toast.warn("Ingrese el ID de su patrocinador")
             }
         }
     }
@@ -153,9 +153,9 @@ function Registration(props) {
                                 }
                                 {
                                     lang === 'English' ?
-                                        <h4>If you don't have a sponsor, use 01</h4>
+                                        <h4>If you don't have a sponsor, use 1</h4>
                                         :
-                                        <h4>Si no tiene un patrocinador, use 01</h4>
+                                        <h4>Si no tiene un patrocinador, use 1</h4>
                                 }
 
 
@@ -174,9 +174,9 @@ function Registration(props) {
                                 </div>
                                 {
                                     lang === 'English' ?
-                                        <h4><FaExclamationCircle /> Check the ID of your sponsor before making a payment.</h4>
+                                        <h4><FaExclamationCircle /> Please confirm your sponsor's ID before making a payment.</h4>
                                         :
-                                        <h4><FaExclamationCircle /> Verifique la identificación de su patrocinador antes de realizar un pago.</h4>
+                                        <h4><FaExclamationCircle /> Verifique el ID de su patrocinador antes de realizar un pago.</h4>
                                 }
                                 <div className="h20"></div>
                                 {

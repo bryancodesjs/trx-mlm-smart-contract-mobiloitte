@@ -21,7 +21,7 @@ function Matrix(props) {
                         <img className="show-matrix-label" src={m1logo}></img>
                         <img className="show-img" src={m1img}></img>
                         <div className="show-text">
-                            <h4> {lang === 'English' ? "You earn 100% commission for every friend you refer to the M1 Matrix." : "Ganas una comisión de un 100% por cada amigo que refieras a tu matríz M1."}</h4>
+                            <h4> {lang === 'English' ? "You earn 100% commission for every user you refer to the M1 Matrix." : "Ganas una comisión de un 100% por cada usuario que refieras a tu matríz M1."}</h4>
                         </div>
                         
                     </div>

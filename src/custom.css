@@ -105,8 +105,22 @@ p {
 .tron_currency-2 {
   width: 35px;
 }
+.quote-yellow {
+  background-color: #ffc107;
+    width: fit-content;
+    color: black !important;
+    font-weight: 600;
+    padding: 0px 20px;
+    border-radius: 9px;
+}
 .signature {
   color:#32326c;
+}
+.reset-bg {
+  background-image: url(./assets/img/rfrs.png);
+    background-position: center;
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
 }
 .whitext {
   color: white;

@@ -1,0 +1,1 @@
+1. BackOfficeSide --> reemplazar 'process.env.REACT_APP_URL' con http://xtron.online

@@ -206,27 +206,28 @@ function BackOfficeSideDashboard(props) {
                 </div>
                 <div className="link_container">
                     {/* <input type="text" value={`${process.env.REACT_APP_URL}/#/registration/${parseInt(UserId)}`} id="refLink" readOnly /> */}
-                    <input type="text" value={`${process.env.REACT_APP_URL}/#/registration/${parseInt(UserId)}`} id="refLink" readOnly />
+                    <input type="text" value={`https://xtron.online/#/registration/${parseInt(UserId)}`} id="refLink" readOnly />
                     <FaRegCopy className="ctatext" onClick={copyAffiliateLink} />
                 </div>
             </div>
             <div className="wallet_wrap xwrap">
                 {
                     lang === 'English' ?
-                        <h3 className="ctatext">My TRX Wallet:</h3>
+                        <h3 className="ctatext">My Wallet:</h3>
                         :
-                        <h3 className="ctatext">Mi billetera de TRX:</h3>
+                        <h3 className="ctatext">Mi billetera:</h3>
                 }
                 <p className="whitext">{tronAccount}</p>
             </div>
             <div className="contract_wrap xwrap">
                 {
                     lang === 'English' ?
-                        <h3 className="ctatext">Smart Contract Address :</h3>
+                        <h3 className="ctatext">Contract Address :</h3>
                         :
-                        <h3 className="ctatext">Dirección de contrato inteligente:</h3>
+                        <h3 className="ctatext">Dirección del contrato:</h3>
                 }
-                <a href={`https://shasta.tronscan.org/#/contract/${process.env.REACT_APP_CONTRACT_ADDRESS}/code`} target="_blank"> <p className="whitext">{process.env.REACT_APP_CONTRACT_ADDRESS}</p></a>
+                <a href={`https://shasta.tronscan.org/#/contract/TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp/code`} rel="noreferrer" target="_blank"> <p className="whitext">TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp</p></a>
+                {/*<a href={`https://shasta.tronscan.org/#/contract/${process.env.REACT_APP_CONTRACT_ADDRESS}/code`} target="_blank"> <p className="whitext">{process.env.REACT_APP_CONTRACT_ADDRESS}</p></a>*/}
             </div>
         </>
     )

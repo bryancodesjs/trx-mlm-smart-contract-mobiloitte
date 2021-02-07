@@ -71,13 +71,9 @@ function Login(props) {
         <p>
             {lang === 'English'
                 ?
-                <span>To invest in  TRON GET EXPRESS you must install TronLink. TronLink is a TRON wallet for the browser
-                        that can be <a style={{ color: "black" }} href={WEBSTORE_URL} target='_blank' rel='noopener noreferrer'>installed from the Chrome Webstore</a>.
-                        Once installed, return back and refresh the page</span>
+                <span>To access XTRON you must install TronLink.</span>
                 :
-                <span>Para invertir en TRON GET EXPRESS debe instalar TronLink. TronLink es una billetera TRON para el navegador
-                        eso puede ser <a style={{ color: "black" }} href={WEBSTORE_URL} target='_blank' rel='noopener noreferrer'>instalado desde Chrome Webstore</a>.
-                        Una vez instalado, regrese y actualice la página.e</span>
+                <span>Para acceder a XTRON debe instalar TronLink.</span>
             }
 
         </p>
@@ -108,10 +104,10 @@ function Login(props) {
         }
         else {
             if (lang === 'English') {
-                toast.warn("Enter Id")
+                toast.warn("Enter your ID")
             }
             else {
-                toast.warn("Ingrese Id")
+                toast.warn("Introduzca su ID")
             }
 
         }

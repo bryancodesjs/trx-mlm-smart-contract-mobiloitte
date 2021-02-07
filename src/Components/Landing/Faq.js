@@ -79,12 +79,7 @@ function Faq(props) {
                                 Para PC (Chrome Extension): <a target="_blank" href="https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec/related">Tronlink Chrome</a></p>
                         }
                     </details>
-                    {
-                        lang === 'English' ?
-                            faqDetails('What is a Smart Contract? ', 'A smart contract (in English Smart contract) is a computer program that executes registered agreements between two or more parties in an automatic and unalterable way.')
-                            :
-                            faqDetails('¿Qué es un Contrato Inteligente?', 'Un contrato inteligente (en inglés Smart contract) es un programa informático que ejecuta acuerdos registrados entre dos o más partes de forma automática e inalterable.')
-                    }
+                    
                 </div>
             </div>
         </div>
