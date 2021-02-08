@@ -14,8 +14,8 @@ function Features(props) {
             </h2>
             <p id="subtitle">
                 {lang === 'English' ?
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab et minima explicabo dolorem, vero exercitationem doloremque aliquam inventore accusamus pariatur."
-                    : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab et minima explicabo dolorem, vero exercitationem doloremque aliquam inventore accusamus pariatur."
+                        "XTRON is a Smart Contract based in hybrid marketing. This is an innovative and decentralized app which provides you with powerful tools to make money using your smartphone or PC."
+                    : "XTRON es un contrato inteligente basado en el marketing híbrido. Este es un programa innovador y descentralizado que te brinda herramientas para generar dinero desde tu teléfono o PC."
                 }
 
             </p>

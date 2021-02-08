@@ -25,7 +25,7 @@ function MyNav(lang) {
                         <FaDollarSign size={30} /> <span className="naviconTXT">Dashboard</span>
                     </Link>
 
-                    <a rel="noreferrer" target="_blank" className="navicon" href="https://t.me/xtronoficial"><FaTelegramPlane size={30} /> <span className="naviconTXT">News</span></a>
+                    {/*<a rel="noreferrer" target="_blank" className="navicon" href="https://t.me/xtronoficial"><FaTelegramPlane size={30} /> <span className="naviconTXT">News</span></a>*/}
                         
                     
 

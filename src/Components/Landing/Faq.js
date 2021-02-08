@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaFileDownload } from "react-icons/fa";
 
 function Faq(props) {
     let lang = props.lang
@@ -48,9 +49,9 @@ function Faq(props) {
                     }
                     {
                         lang === 'English' ?
-                            faqDetails('What is a Smart Contract?', 'A smart contract (in English Smart contract) is a computer program that executes registered agreements between two or more parties in an automatic and unalterable way.')
+                            faqDetails('What is a Smart Contract?', 'A smart contract is a computer program that executes registered agreements between two or more parties in an automatic and unalterable way.')
                             :
-                            faqDetails('¿Qué es un Contrato Inteligente?', 'Un contrato inteligente (en inglés Smart contract) es un programa informático que ejecuta acuerdos registrados entre dos o más partes de forma automática e inalterable.')
+                            faqDetails('¿Qué es un Contrato Inteligente?', 'Un contrato inteligente es un programa informático que ejecuta acuerdos registrados entre dos o más partes de forma automática e inalterable.')
                     }
                     <details>
                         {
@@ -79,9 +80,48 @@ function Faq(props) {
                                 Para PC (Chrome Extension): <a target="_blank" href="https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec/related">Tronlink Chrome</a></p>
                         }
                     </details>
-                    
+                   
+                    <details>
+                        {
+                            lang === 'English' ?
+                                <summary>I forgot/lost my ID, What can I do?</summary>
+                                :
+                                <summary>Perdí/Olvidé mi ID, ¿Que puedo hacer?</summary>
+                        }
+                        {
+                            lang === 'English' ?
+                            <p className="text">Do not worry, simply send your wallet address to <a href="mailto:support@xtron.online">support@xtron.online</a> and you will receive an email with your ID shortly.</p>
+                            :
+                            <p className="text">No te preocupes, simplemente envía la dirección de la wallet que utilizaste para registrarte a <a href="mailto:support@xtron.online">support@xtron.online</a> y recibiras un correo con tu ID en la mayor brevedad.</p>
+                        }
+                    </details>
                 </div>
+            
+                
             </div>
+            <div className="faqBox d-flex flex-column align-items-center justify-content-center">
+                <h2 className="text-center ctatext">
+                    {lang === 'English' ? "RESOURCES" : "RECURSOS"}
+                </h2>
+
+                <h2 className="whitext heading-sub-title text-center">
+                {
+                lang === 'English' ?
+                "Download our .PDF presentation"
+                :
+                "Descarga nuestra presentación en .PDF"
+                }
+            </h2>
+                {
+                    lang === 'English' ?
+                    <a className="btn btn-success custombtn" rel="noreferrer" target="_blank" href="https://xtron-resources.s3.us-east-2.amazonaws.com/xtronEnPresentation.pdf">Download Now <FaFileDownload/></a>
+                    :
+                    <a className="btn btn-success custombtn" rel="noreferrer" target="_blank" href="https://xtron-resources.s3.us-east-2.amazonaws.com/xtronEsPresentation.pdf">Descargar <FaFileDownload/></a>
+                }
+                
+                    
+            </div>
+            
         </div>
     )
 }
