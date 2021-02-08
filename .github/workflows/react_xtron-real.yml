@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@master
@@ -31,5 +31,5 @@ jobs:
       with:
         app-name: 'xtron-real'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6ccc70ffd2c048e098750e3a3e894b64 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_40613b662c0d4c18a18c3aa3c1804714 }}
         package: .
