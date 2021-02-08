@@ -30,7 +30,7 @@ function Tutoril() {
                                     <h4 class="whitext">#  <FaUsers color="#35FF69" /></h4>
                                 </div>
                             </div>
-                            <h2 class="text-left ctatext">$3,0000 USD</h2>
+                            <h2 class="text-left ctatext">$3,000 USD</h2>
                             <h4 class="subtext earning_amount text-left">$$$ TRX <img src={tron32x} alt="tron32x" class="tron_currency" /></h4>
                             {/* <!---  <button class="btn btn-success custom_btn" id="trx_amount"> TRX Amount</button> --> */}
                             <hr class="custom_hr" />
@@ -91,15 +91,15 @@ function Tutoril() {
                                 <p class="whitext">When you sign up, you get a referral link which is
                                 tied to you and the person who invited you.</p>
 
-                                <p class="whitext">Your first purchase ($10) goes towards the first slots of the
-                                M1 & M2 matrices simultaneously ($5 each). After the first purchase, you can buy
+                                <p class="whitext">Your first purchase (400 TRX) goes towards the first slots of the
+                                M1 and M2 matrices simultaneously (200 each). After the first purchase, you can buy
                                 any slot you wish</p>
 
                                 <img class="first-payment-img" src={Simult} alt="xtron matrix first payment" />
                                 <br />
 
                                 <h2 class="ctatext">SLOTS</h2>
-                                <p class="whitext">Each of these two matrices (M1 & M2) has 10 slots. Each subsequent slot is 2x
+                                <p class="whitext">Each of these two matrices (M1 and M2) has 12 slots. Each subsequent slot is 2x
                                     more expensive than the previous one, and profits from each subsequent slot are 2x higher.</p>
                                 <p class="whitext">After your first purchase, you can buy any additional slot from one matrix without having
                                 to buy the same slot from the other matrix.
@@ -122,13 +122,13 @@ function Tutoril() {
 
                                 <h2 class="ctatext">Registration</h2>
                                 <p class="whitext">The only requirement to be participate in the XTRON Smart Contract is to purchase the first
-                                slots of each matrix. The first slots of each matrixx cost $5 each and they are bought together. All further
-                                    slots can be purchased separately so, for example, you can purchase the 4th slot of the M1 matrix without having the 3rd slot.</p>
+                                slots of each matrix. The first slots of each matrixx cost 200 TRX each and they are bought together. All further
+                                    slots can be purchased separately so, for example, you can purchase the 4th slot of the M1 matrix without having to buy the 4th slot of the M2.</p>
                                 <br />
 
                                 <h2 class="ctatext">Reinvestments</h2>
                                 <p class="whitext">A reinvestment clears the slot for you, so you can keep referring people and earning
-                                money from it.
+                                money with your slots.
                                     </p>
                                 <p class="whitext">Reinvestments happen automatically the moment you refer a new user into the last free
                                 place of a slot. Also, you reappear in a free space of your sponsor everytime a reinvestment happens to you.
