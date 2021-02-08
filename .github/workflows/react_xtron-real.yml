@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - react
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -31,5 +32,5 @@ jobs:
       with:
         app-name: 'xtron-real'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_40613b662c0d4c18a18c3aa3c1804714 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_297b6ee95d2e470b8466bc7528c6e661 }}
         package: .
