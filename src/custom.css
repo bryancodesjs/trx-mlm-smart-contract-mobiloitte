@@ -61,7 +61,7 @@ h5 {
   font-size: 18px !important;
 }
 p {
-  font-size: 20px !important;
+  font-size: 24px !important;
 }
 /* GLOBAL STANDARDS */
 #lang {
@@ -93,6 +93,8 @@ p {
 }
 .refresh-wrap {
   margin-top: 40px;
+  flex-direction: column;
+    align-items: center;
 }
 .refreshbtn {
   z-index: 100;
@@ -103,6 +105,10 @@ p {
     outline: none;
     border: none;
     border-radius: 5px;
+}
+.refreshbtn:focus {
+  background-color:#525277;
+  color:#9b96af;
 }
 .refreshbtn svg {
   margin-right: 5px;

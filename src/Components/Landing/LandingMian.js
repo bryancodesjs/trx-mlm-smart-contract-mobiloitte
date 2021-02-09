@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Counter from './Counter'
+/*import Counter from './Counter'*/
 import Faq from './Faq'
 import Features from './Features'
 import Matrix from './Matrix'

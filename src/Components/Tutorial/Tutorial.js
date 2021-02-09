@@ -7,7 +7,7 @@ import M2dist from '../../assets/img/M2-dist.jpg'
 import reinvest from '../../assets/img/reinvest.jpg'
 import upgrade from '../../assets/img/6th.jpg'
 import Simult from '../../assets/img/SIMULT.jpg'
-import { FaUsers, FaFacebook, FaTwitter, FaRegCopy } from "react-icons/fa";
+import { FaUsers, FaRegCopy } from "react-icons/fa";
 //import xtronLogo from '../../assets/img/xtronlong.png'
 import MyNav from '../BackOffice/Nav'
 //import { Link } from 'react-router-dom';
@@ -63,10 +63,7 @@ function Tutoril() {
                                 <FaRegCopy className="ctatext" />
                             </div>
                             <hr class="custom_hr" />
-                            <div class="social_buttons">
-                                <a><FaFacebook className="subtext" /></a> &nbsp;&nbsp;&nbsp;
-                                <a><FaTwitter className="subtext" /></a>
-                            </div>
+                            
                         </div>
 
                         <div class="wallet_wrap xwrap">

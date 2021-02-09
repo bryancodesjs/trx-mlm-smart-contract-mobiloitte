@@ -3,8 +3,8 @@ import BackOfficeSideDashboard from './BackOfficeSideDashboard'
 import BackOfficeStatusFor12x from './BackOfficeStatusFor12x'
 import BackOfficeStatusFor5x from './BackOfficeStatusFor5x'
 import MyNav from './Nav'
-import xtronLogo from '../../assets/img/xtronlong.png'
-import { Link } from 'react-router-dom';
+/*import xtronLogo from '../../assets/img/xtronlong.png'*/
+/*import { Link } from 'react-router-dom';*/
 import { FaCog } from "react-icons/fa";
 
 const initialState = {
@@ -76,7 +76,7 @@ function BackOfficeMain(props) {
 
     function refresh(){
         localStorage.clear();
-        window.location.reload(false);
+        /*window.location.reload(false);*/
     }
     return (
         <BackofficeContext.Provider value={{ backofficeDataM: backofficeData, dispatchM: dispatch }}>
@@ -101,7 +101,7 @@ function BackOfficeMain(props) {
                             <BackOfficeStatusFor12x lang={lang} />
                         </div>
                     </div>
-                    <div className="row justify-content-center refresh-wrap">
+                    <div className="d-flex justify-content-center refresh-wrap">
                         <h3 className="whitext">App stuck or unresponsive?</h3>
                     <button className="refreshbtn" onClick={() => refresh()}><FaCog/>Refresh</button>
                     </div>

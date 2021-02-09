@@ -18,8 +18,8 @@ function Matrix(props) {
             <div className="matrix_boxes mt-5">
                 <div className="show-matrix" id="boxone">
                     <div className="show-wrap">
-                        <img className="show-matrix-label" src={m1logo}></img>
-                        <img className="show-img" src={m1img}></img>
+                        <img className="show-matrix-label" src={m1logo} alt="xtron M1 matrix logo"></img>
+                        <img className="show-img" src={m1img} alt="xtron M1 matrix graphic"></img>
                         <div className="show-text">
                             <h4> {lang === 'English' ? "You earn 100% commission for every user you refer to the M1 Matrix." : "Ganas una comisión de un 100% por cada usuario que refieras a tu matríz M1."}</h4>
                         </div>
@@ -29,8 +29,8 @@ function Matrix(props) {
                 </div>
                 <div className="show-matrix" id="boxtwo">
                     <div className="show-wrap">
-                        <img className="show-matrix-label" src={m2logo}></img>
-                        <img className="show-img" src={m2img}></img>
+                        <img className="show-matrix-label" src={m2logo} alt="xtron M2 matrix logo"></img>
+                        <img className="show-img" src={m2img} alt="xtron M2 matrix graphic"></img>
                         <div className="show-text">
                         <h4> {lang === 'English' ? "You earn 20% commission from 5 levels for every user you and your friends refer to the M2 Matrix." : "Ganas un 20% por 5 niveles por cada usuario directo o indirecto que se encuentre en tu matríz M2."}</h4>
                             

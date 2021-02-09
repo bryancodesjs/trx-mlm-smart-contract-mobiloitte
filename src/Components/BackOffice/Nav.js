@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react'
 import xtronLogo from '../../assets/img/xtronlong.png'
 import { Link } from 'react-router-dom';
-import { FaPowerOff, FaRegFileAlt, FaTelegramPlane, FaDollarSign } from "react-icons/fa";
+import { FaPowerOff, FaRegFileAlt, FaDollarSign } from "react-icons/fa";
 
 function MyNav(lang) {
     

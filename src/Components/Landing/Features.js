@@ -6,10 +6,10 @@ function Features(props) {
     return (
         <div className="container text-center mt-5" id="features">
             <h2 className="whitext heading-sub-title">
-                {lang === 'English' ? "International community" : "Comunidad Internacional"}
+                {lang === 'English' ? "Welcome to the most profitable" : "Bienvenid@ a la comunidad"}
             </h2>
             <h2 className="ctatext heading-sub-title">
-                {lang === 'English' ? "Descentralized Global Ecosystem" : "Ecosistema Global Decentralizado"}
+                {lang === 'English' ? "descentralized global ecosystem" : "global descentralizada mas rentable"}
 
             </h2>
             <p id="subtitle">

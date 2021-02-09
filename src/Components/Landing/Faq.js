@@ -65,19 +65,19 @@ function Faq(props) {
                             lang === 'English' ?
                                 <p className="text">To be part of the XTRON community you only need to install a wallet on your smartphone, tablet or PC.
                                 <br /><br />
-                                For mobile Android devices: <a target="_blank" href="https://play.google.com/store/apps/details?id=com.tronlinkpro.wallet">Tronlink Android</a>
+                                For mobile Android devices: <a rel="noreferrer" target="_blank" href="https://play.google.com/store/apps/details?id=com.tronlinkpro.wallet">Tronlink Android</a>
                                 <br />
-                                For mobile iOS devices: <a target="_blank" href="https://apps.apple.com/us/app/tronlink-trx-btt-wallet/id1453530188">Tronlink iOS</a>
+                                For mobile iOS devices: <a rel="noreferrer" target="_blank" href="https://apps.apple.com/us/app/tronlink-trx-btt-wallet/id1453530188">Tronlink iOS</a>
                                 <br />
-                                For PC (Chrome Extension): <a target="_blank" href="https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec/related">Tronlink Chrome</a></p>
+                                For PC (Chrome Extension): <a rel="noreferrer" target="_blank" href="https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec/related">Tronlink Chrome</a></p>
                                 :
                                 <p className="text">Para formar parte de la comunidad de XTRON solo necesitas instalar una wallet en tu smartphone, tablet o PC.
                                 <br /><br />
-                                Para móviles Android: <a target="_blank" href="https://play.google.com/store/apps/details?id=com.tronlinkpro.wallet">Tronlink Android</a>
+                                Para móviles Android: <a rel="noreferrer" target="_blank" href="https://play.google.com/store/apps/details?id=com.tronlinkpro.wallet">Tronlink Android</a>
                                 <br />
-                                Para móviles iOS: <a target="_blank" href="https://apps.apple.com/us/app/tronlink-trx-btt-wallet/id1453530188">Tronlink iOS</a>
+                                Para móviles iOS: <a rel="noreferrer" target="_blank" href="https://apps.apple.com/us/app/tronlink-trx-btt-wallet/id1453530188">Tronlink iOS</a>
                                 <br />
-                                Para PC (Chrome Extension): <a target="_blank" href="https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec/related">Tronlink Chrome</a></p>
+                                Para PC (Chrome Extension): <a rel="noreferrer" target="_blank" href="https://chrome.google.com/webstore/detail/tronlink%EF%BC%88%E6%B3%A2%E5%AE%9D%E9%92%B1%E5%8C%85%EF%BC%89/ibnejdfjmmkpcnlpebklmnkoeoihofec/related">Tronlink Chrome</a></p>
                         }
                     </details>
                    
@@ -90,9 +90,9 @@ function Faq(props) {
                         }
                         {
                             lang === 'English' ?
-                            <p className="text">Do not worry, simply send your wallet address to <a href="mailto:support@xtron.online">support@xtron.online</a> and you will receive an email with your ID shortly.</p>
+                            <p className="text">Do not worry, simply send your wallet address to <a rel="noreferrer" href="mailto:support@xtron.online">support@xtron.online</a> and you will receive an email with your ID shortly.</p>
                             :
-                            <p className="text">No te preocupes, simplemente envía la dirección de la wallet que utilizaste para registrarte a <a href="mailto:support@xtron.online">support@xtron.online</a> y recibiras un correo con tu ID en la mayor brevedad.</p>
+                            <p className="text">No te preocupes, simplemente envía la dirección de la wallet que utilizaste para registrarte a <a rel="noreferrer" href="mailto:support@xtron.online">support@xtron.online</a> y recibiras un correo con tu ID en la mayor brevedad.</p>
                         }
                     </details>
                 </div>
