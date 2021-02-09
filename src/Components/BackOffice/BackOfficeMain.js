@@ -6,6 +6,9 @@ import MyNav from './Nav'
 /*import xtronLogo from '../../assets/img/xtronlong.png'*/
 /*import { Link } from 'react-router-dom';*/
 import { FaCog } from "react-icons/fa";
+import ReactGA from 'react-ga';
+ReactGA.initialize('G-6MQ8JWRM63'); /*Unique Google Analytics ID*/
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const initialState = {
     total5x: 0,
@@ -76,6 +79,8 @@ function BackOfficeMain(props) {
 
     function refresh(){
         localStorage.clear();
+        document.getElementById('refreshCog').classList.add('rotate', 'refreshbtn-visited');
+        
         /*window.location.reload(false);*/
     }
     return (
@@ -103,7 +108,7 @@ function BackOfficeMain(props) {
                     </div>
                     <div className="d-flex justify-content-center refresh-wrap">
                         <h3 className="whitext">App stuck or unresponsive?</h3>
-                    <button className="refreshbtn" onClick={() => refresh()}><FaCog/>Refresh</button>
+                    <button id="refreshCog" className="refreshbtn" onClick={() => refresh()}>< FaCog/><span id="refresh1">Refresh</span></button>
                     </div>
                 </div>
             </div>

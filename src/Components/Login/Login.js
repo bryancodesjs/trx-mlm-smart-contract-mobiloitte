@@ -8,6 +8,10 @@ import { toast } from 'react-toastify';
 import ToastContainerCust from '../../Common/ToastContainerCust'
 import TronWeb from 'tronweb'
 import Utils from '../../Utils/Utils'
+import ReactGA from 'react-ga';
+ReactGA.initialize('G-6MQ8JWRM63'); /*Unique Google Analytics ID*/
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 
 const WEBSTORE_URL = 'https://chrome.google.com/webstore/detail/ibnejdfjmmkpcnlpebklmnkoeoihofec/';
 
@@ -91,6 +95,10 @@ function Login(props) {
                         pathname: "/back-office-main",
                         state: { lang: lang }
                     })
+                    ReactGA.event({
+                        category: 'User',
+                        action: 'Successful Login'
+                      });
                     window.location.reload(false);
                 }
                 catch (error) {

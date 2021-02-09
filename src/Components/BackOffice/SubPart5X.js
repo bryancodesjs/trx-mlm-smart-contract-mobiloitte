@@ -146,6 +146,7 @@ function SubPart5X({ level, ammount, lang }) {
                 });
                 setbuyLevelLoader(false)
                 window.location.reload(false);
+
             } catch (error) {
                 console.log(error);
                 setbuyLevelLoader(false)
@@ -157,7 +158,7 @@ function SubPart5X({ level, ammount, lang }) {
                 toast.error("Purchase in preview mode is not available! Please please Register with your Tron wallet.");
             }
             else {
-                toast.error("¡La compra en modo de vista previa no está disponible! Regístrese con su billetera Tron.");
+                toast.error("¡La compra en modo de vista previa no está disponible! Regístrese con su billetera de Tron.");
             }
         }
     }

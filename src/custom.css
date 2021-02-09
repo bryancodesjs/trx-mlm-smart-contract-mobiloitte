@@ -106,12 +106,25 @@ p {
     border: none;
     border-radius: 5px;
 }
-.refreshbtn:focus {
-  background-color:#525277;
-  color:#9b96af;
+.refreshbtn-visited {
+  background-color:#525277 !important;
+  color:#9b96af !important;
 }
 .refreshbtn svg {
   margin-right: 5px;
+}
+.rotate svg {
+  -webkit-transition: -webkit-transform 1s;
+  -webkit-transform: rotate(260deg);
+}
+.d-none {
+  display:none !important;
+}
+.d-block {
+  display: block !important;
+}
+#refresh2 {
+  display:none;
 }
 #address a:hover {
   text-decoration: none;
