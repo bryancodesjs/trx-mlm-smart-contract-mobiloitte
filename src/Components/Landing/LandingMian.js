@@ -41,7 +41,7 @@ function LandingMian(props) {
                     <h1 className="mt-5 whitext heading-title"><strong>
                         {lang === 'English' ? "HYBRID MARKETING SMART CONTRACT" : "CONTRATO INTELIGENTE DE MARKETING HÍBRIDO"}</strong></h1>
                     <h2 className="whitext lightweight">
-                        {lang === 'English' ? "100% decentralized and independent" : "100% descentralizado e independiente"}</h2>
+                        {lang === 'English' ? "100% descentralized and independent" : "100% decentralizado e independiente"}</h2>
                     <div className="mt-5">
                         <button className="btn btn-success custombtn" onClick={() => navigateTo('/registration')}>
                             {lang === 'English' ? "REGISTER" : "REGISTRO"}</button>

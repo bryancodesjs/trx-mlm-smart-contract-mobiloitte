@@ -9,13 +9,13 @@ function Features(props) {
                 {lang === 'English' ? "International community" : "Comunidad Internacional"}
             </h2>
             <h2 className="ctatext heading-sub-title">
-                {lang === 'English' ? "Decentralized Global Ecosystem" : "Ecosistema Global Descentralizado"}
+                {lang === 'English' ? "Descentralized Global Ecosystem" : "Ecosistema Global Decentralizado"}
 
             </h2>
             <p id="subtitle">
                 {lang === 'English' ?
-                        "XTRON is a Smart Contract based in hybrid marketing. This is an innovative and decentralized app which provides you with powerful tools to make money using your smartphone or PC."
-                    : "XTRON es un contrato inteligente basado en el marketing híbrido. Este es un programa innovador y descentralizado que te brinda herramientas para generar dinero desde tu teléfono o PC."
+                        "XTRON is a Smart Contract based in hybrid marketing. This is an innovative and descentralized app which provides you with powerful tools to make money using your smartphone or PC."
+                    : "XTRON es un contrato inteligente basado en el marketing híbrido. Este es un programa innovador y decentralizado que te brinda herramientas para generar dinero desde tu teléfono o PC."
                 }
 
             </p>
@@ -54,7 +54,7 @@ function Features(props) {
                     <FaArrowsAlt size={50} color={'#fff'}/>
                     <br /><br />
                     <h2 className="ctatext"><strong>
-                        {lang === 'English' ? "DECENTRALIZED" : "DECENTRALIZADO"}
+                        {lang === 'English' ? "DESCENTRALIZED" : "DECENTRALIZADO"}
 
                     </strong></h2>
                     <p className="text-justify">

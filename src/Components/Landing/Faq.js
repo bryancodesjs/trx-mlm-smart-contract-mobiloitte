@@ -23,7 +23,7 @@ function Faq(props) {
                         lang === 'English' ?
                             faqDetails(
                                 'What is XTRON?',
-                                'XTRON is the first 100% decentralized smart contract based on Tron (TRX) which operates automatically and without human intervention.')
+                                'XTRON is the first 100% descentralized smart contract based on Tron (TRX) which operates automatically and without human intervention.')
                             :
                             faqDetails(
                                 '¿Qué es XTRON?',
