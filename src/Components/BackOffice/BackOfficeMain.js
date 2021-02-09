@@ -5,7 +5,7 @@ import BackOfficeStatusFor5x from './BackOfficeStatusFor5x'
 import MyNav from './Nav'
 import xtronLogo from '../../assets/img/xtronlong.png'
 import { Link } from 'react-router-dom';
-import { FaPowerOff, FaRegFileAlt, FaTelegramPlane } from "react-icons/fa";
+import { FaCog } from "react-icons/fa";
 
 const initialState = {
     total5x: 0,
@@ -74,7 +74,10 @@ function BackOfficeMain(props) {
         })();
     }, []);
 
-
+    function refresh(){
+        localStorage.clear();
+        window.location.reload(false);
+    }
     return (
         <BackofficeContext.Provider value={{ backofficeDataM: backofficeData, dispatchM: dispatch }}>
             <div className="" id="backofficewrap">
@@ -97,6 +100,10 @@ function BackOfficeMain(props) {
                             <BackOfficeStatusFor5x lang={lang} />
                             <BackOfficeStatusFor12x lang={lang} />
                         </div>
+                    </div>
+                    <div className="row justify-content-center refresh-wrap">
+                        <h3 className="whitext">App stuck or unresponsive?</h3>
+                    <button className="refreshbtn" onClick={() => refresh()}><FaCog/>Refresh</button>
                     </div>
                 </div>
             </div>

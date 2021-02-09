@@ -91,7 +91,22 @@ p {
   padding-bottom: 0px;
   font-size: 10px;
 }
-
+.refresh-wrap {
+  margin-top: 40px;
+}
+.refreshbtn {
+  z-index: 100;
+  color: white;
+    background-color: #623cea;
+    padding: 5px 30px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+.refreshbtn svg {
+  margin-right: 5px;
+}
 #address a:hover {
   text-decoration: none;
 }
