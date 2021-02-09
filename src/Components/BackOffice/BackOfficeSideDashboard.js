@@ -226,7 +226,7 @@ function BackOfficeSideDashboard(props) {
                         :
                         <h3 className="ctatext">Dirección del contrato:</h3>
                 }
-                <a href={`https://shasta.tronscan.org/#/contract/TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp/code`} rel="noreferrer" target="_blank"> <p className="whitext">TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp</p></a>
+                <a href={`https://tronscan.org/#/contract/TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp/transactions`} rel="noreferrer" target="_blank"> <p className="whitext">TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp</p></a>
                 {/*<a href={`https://shasta.tronscan.org/#/contract/${process.env.REACT_APP_CONTRACT_ADDRESS}/code`} target="_blank"> <p className="whitext">{process.env.REACT_APP_CONTRACT_ADDRESS}</p></a>*/}
             </div>
         </>
