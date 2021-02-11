@@ -53,6 +53,12 @@ function Faq(props) {
                             :
                             faqDetails('¿Qué es un Contrato Inteligente?', 'Un contrato inteligente es un programa informático que ejecuta acuerdos registrados entre dos o más partes de forma automática e inalterable.')
                     }
+                    {
+                        lang === 'English' ?
+                            faqDetails('When can I withdraw my profits', 'Your payments are processed immediately on the Tron Blockchain. Your profits are sent to your wallet in about 10 seconds.')
+                            :
+                            faqDetails('¿Cuándo puedo retirar mis beneficios?', 'Tus pagos son procesados inmediatamente por la blockhain de Tron. Tus beneficios son enviados a tu wallet en menos de 10 segundos.')
+                    }
                     <details>
                         {
                             lang === 'English' ?
@@ -90,9 +96,9 @@ function Faq(props) {
                         }
                         {
                             lang === 'English' ?
-                            <p className="text">Do not worry, simply send your wallet address to <a rel="noreferrer" href="mailto:support@xtron.online">support@xtron.online</a> and you will receive an email with your ID shortly.</p>
+                            <p className="text">For more convenience, you can now login using your TRX wallet address.</p>
                             :
-                            <p className="text">No te preocupes, simplemente envía la dirección de la wallet que utilizaste para registrarte a <a rel="noreferrer" href="mailto:support@xtron.online">support@xtron.online</a> y recibiras un correo con tu ID en la mayor brevedad.</p>
+                            <p className="text">Para mayor conveniencia, ya puedes loguearte utilizando tu dirección de wallet de TRX.</p>
                         }
                     </details>
                 </div>

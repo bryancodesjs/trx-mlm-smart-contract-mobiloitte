@@ -15,6 +15,24 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 
 const WEBSTORE_URL = 'https://chrome.google.com/webstore/detail/ibnejdfjmmkpcnlpebklmnkoeoihofec/';
 
+
+
+function switchTo1() {
+    
+    document.getElementById('method1btn').classList.add('switchbtn-active');
+    document.getElementById('method2btn').classList.remove('switchbtn-active');
+    document.getElementById('method1wrap').classList.remove('hide');
+    document.getElementById('method2wrap').classList.add('hide');
+}
+
+function switchTo2() {
+    
+    document.getElementById('method1btn').classList.remove('switchbtn-active');
+    document.getElementById('method2btn').classList.add('switchbtn-active');
+    document.getElementById('method1wrap').classList.add('hide');
+    document.getElementById('method2wrap').classList.remove('hide');
+}
+
 function Login(props) {
     const lang = props.location && props.location.state
     const history = useHistory();
@@ -121,6 +139,53 @@ function Login(props) {
         }
     }
 
+    const loginSubmit2 = async () => {
+        if (backOfficeID !== '') {
+            if (loggedIn) {
+                if (backOfficeID.length > 4) {
+                    try {
+                
+                        try {
+                            auth.userLogIn(true, 'Login');
+                            localStorage.removeItem('backOfficeID')
+                            localStorage.setItem('backOfficeID', backOfficeID);
+                            history.push({
+                             pathname: "/back-office-main",
+                              state: { lang: lang }
+                            })
+                            ReactGA.event({
+                            category: 'User',
+                            action: 'Successful Login'
+                            });
+                            window.location.reload(false);
+                            }
+                        catch (error) {
+                            toast.error("Error")
+                            console.log(error)
+                        }
+                
+                    } catch (error) {
+                        alert.show("Wallet Error")
+                        
+                        }
+                } else {
+                    toast.error("Wallet invalida")
+                }
+            }
+            else {
+                toast.error(CustomToastWithLink)
+            }
+        }
+        else {
+            if (lang === 'English') {
+                toast.warn("Enter your ID")
+            }
+            else {
+                toast.warn("Introduzca su ID")
+            }
+
+        }
+    }
     return (
         <div className="" id="backofficewrap">
             <ToastContainerCust />
@@ -145,17 +210,34 @@ function Login(props) {
                                 }
                                 {
                                     lang === 'English' ?
-                                        <h4>Enter your ID to access your backoffice</h4>
+                                        <h4>Enter your ID/Wallet to access your backoffice</h4>
                                         :
-                                        <h4>Ingrese su ID para acceder a su backoffice</h4>
+                                        <h4>Ingrese su ID/Wallet para acceder a su backoffice</h4>
                                 }
+                                <div className="login-switch-wrap">
+                                    <button id="method1btn" className="switchbtn switchbtn-active" onClick={() => switchTo1()}>ID</button>
+                                    <button id="method2btn" className="switchbtn" onClick={() => switchTo2()}> TRX Wallet</button>
+                                </div>
+                                <div id="method1wrap" className="login-method-1">
+                                    <div className="registration-input">
+                                        <input type="text" value={backOfficeID} className="sponsor-input-box text-center" onChange={(e) => SetBackOfficeID(e.target.value)} />
+                                    </div>
+                                    <div className="registration-btn">
+                                        <button className="btn btn-success custombtn" onClick={() => loginSubmit()} >LOGIN</button>
+                                    </div>
+                                    
+                                </div>
 
-                                <div className="registration-input">
-                                    <input type="text" value={backOfficeID} className="sponsor-input-box text-center" onChange={(e) => SetBackOfficeID(e.target.value)} />
+                                <div id="method2wrap" className="login-method-2 hide">
+                                    <div className="registration-input">
+                                        <input type="text" value={backOfficeID} className="sponsor-input-box text-center" onChange={(e) => SetBackOfficeID(e.target.value)} />
+                                    </div>
+                                    <div className="registration-btn">
+                                        <button className="btn btn-success custombtn" onClick={() => loginSubmit2()} >LOGIN</button>
+                                    </div>
+                                    
                                 </div>
-                                <div className="registration-btn">
-                                    <button className="btn btn-success custombtn" onClick={() => loginSubmit()} >LOGIN</button>
-                                </div>
+                                
                                 <div className="h20"></div>
                                 {
                                     lang === 'English' ?
