@@ -142,7 +142,7 @@ function Login(props) {
     const loginSubmit2 = async () => {
         if (backOfficeID !== '') {
             if (loggedIn) {
-                if (backOfficeID.length > 4) {
+                if (backOfficeID.length > 33) {
                     try {
                 
                         try {
