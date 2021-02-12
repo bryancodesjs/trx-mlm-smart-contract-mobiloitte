@@ -113,10 +113,7 @@ function Login(props) {
                         pathname: "/back-office-main",
                         state: { lang: lang }
                     })
-                    ReactGA.event({
-                        category: 'User',
-                        action: 'Successful Login'
-                      });
+                    
                     window.location.reload(false);
                 }
                 catch (error) {

@@ -6,9 +6,6 @@ import MyNav from './Nav'
 /*import xtronLogo from '../../assets/img/xtronlong.png'*/
 /*import { Link } from 'react-router-dom';*/
 import { FaCog } from "react-icons/fa";
-import ReactGA from 'react-ga';
-ReactGA.initialize('G-6MQ8JWRM63'); /*Unique Google Analytics ID*/
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const initialState = {
     total5x: 0,

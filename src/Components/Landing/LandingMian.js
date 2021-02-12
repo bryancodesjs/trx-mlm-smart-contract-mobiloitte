@@ -7,9 +7,6 @@ import logo_banner from '../../assets/img/xtronlong.png'
 import tron32x from '../../assets/img/tron32x.png'
 import { useHistory } from 'react-router-dom';
 import { FaExternalLinkAlt } from "react-icons/fa";
-import ReactGA from 'react-ga';
-ReactGA.initialize('G-6MQ8JWRM63'); /*Unique Google Analytics ID*/
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 
 function LandingMian(props) {

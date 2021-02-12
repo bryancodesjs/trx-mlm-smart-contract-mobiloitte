@@ -7,9 +7,6 @@ import { FaExclamationCircle, FaSignInAlt } from "react-icons/fa";
 import ToastContainerCust from '../../Common/ToastContainerCust'
 import Utils from '../../Utils/Utils'
 import { MyClockLoader } from '../../Common/Loader'
-import ReactGA from 'react-ga';
-ReactGA.initialize('G-6MQ8JWRM63'); /*Unique Google Analytics ID*/
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 
 function Registration(props) {
@@ -105,10 +102,7 @@ function Registration(props) {
                         pathname: "/back-office-main",
                         state: { lang: lang }
                     })
-                    ReactGA.event({
-                        category: 'User',
-                        action: 'Successful Registration'
-                      });
+                    
                     window.location.reload(false);
                 } catch (error) {
                     SetisModalOpen(false)
