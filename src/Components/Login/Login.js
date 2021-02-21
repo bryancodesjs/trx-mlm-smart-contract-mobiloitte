@@ -217,7 +217,7 @@ function Login(props) {
                                 </div>
                                 <div id="method1wrap" className="login-method-1">
                                     <div className="registration-input">
-                                        <input type="text" value={backOfficeID} className="sponsor-input-box text-center" onChange={(e) => SetBackOfficeID(e.target.value)} />
+                                        <input id="customInput" name="customInputName" type="text" value={backOfficeID} className="sponsor-input-box text-center" onChange={(e) => SetBackOfficeID(e.target.value)} />
                                     </div>
                                     <div className="registration-btn">
                                         <button className="btn btn-success custombtn" onClick={() => loginSubmit()} >LOGIN</button>
@@ -227,7 +227,7 @@ function Login(props) {
 
                                 <div id="method2wrap" className="login-method-2 hide">
                                     <div className="registration-input">
-                                        <input type="text" value={backOfficeID} className="sponsor-input-box text-center" onChange={(e) => SetBackOfficeID(e.target.value)} />
+                                        <input id="customInput" name="customInputName" type="text" value={backOfficeID} className="sponsor-input-box text-center" onChange={(e) => SetBackOfficeID(e.target.value)} />
                                     </div>
                                     <div className="registration-btn">
                                         <button className="btn btn-success custombtn" onClick={() => loginSubmit2()} >LOGIN</button>

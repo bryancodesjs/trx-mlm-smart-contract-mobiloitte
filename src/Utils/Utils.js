@@ -7,10 +7,10 @@
 // const contract_address = "TTpGpJ1JN75ioXm8k1LhCWFEQqGbptyzAF"
 
 //xtron-real
-const contract_address = "TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp"
+//const contract_address = "TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp"
 
 //xtron-shasta
-//const contract_address = "TQrmGowd3HkCJrHNgDwNAsqSyfkKj6mFXc"
+const contract_address = "TQrmGowd3HkCJrHNgDwNAsqSyfkKj6mFXc"
 
 //.env
 //const contract_address = process.env.REACT_APP_CONTRACT_ADDRESS
