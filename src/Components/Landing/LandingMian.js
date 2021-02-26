@@ -65,7 +65,7 @@ function LandingMian(props) {
                     <p className="text-center" id="address">
                     {lang === 'English' ? "Contract address" : "Direccion del contrato"} : <a rel="noreferrer" target="_blank" href={`https://tronscan.org/#/contract/TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp/transactions`}>TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp <FaExternalLinkAlt /></a>
                     </p>
-            <h4 className="text-center pb-5 signature">XTRON GLOBAL 2021</h4>
+            <h4 className="text-center pb-5 signature">XTRON GLOBAL 2021 V20200225.01</h4>
         </>
     )
 }
