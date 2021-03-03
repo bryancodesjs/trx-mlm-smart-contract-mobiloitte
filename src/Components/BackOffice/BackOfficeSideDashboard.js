@@ -91,7 +91,7 @@ function BackOfficeSideDashboard(props) {
             setTronAccount(localStorage.getItem('backOfficeID'))
             try {
                 const lastlavel = await Utils.contract.users(localStorage.getItem('backOfficeID')).call();
-                const x12balance = await Utils.contract.x12balance(localStorage.getItem('backOfficeID')).call();
+                const x12balance = await Utils.contract.m2balance(localStorage.getItem('backOfficeID')).call();
                 setx12balanceTRX((parseInt(x12balance._hex) / 1000000));
                 console.log("x12balance", (parseInt(x12balance._hex) / 1000000))
                 setUserId(lastlavel.id._hex)

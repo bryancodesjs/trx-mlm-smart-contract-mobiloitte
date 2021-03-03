@@ -78,7 +78,7 @@ function SubPart5X({ level, ammount, lang }) {
         }
         try {
             SetisModalOpen(true)
-            const lastlavel = await Utils.contract.usersactiveX5Levels(userAddress, level).call();
+            const lastlavel = await Utils.contract.usersactiveM1Levels(userAddress, level).call();
             if (lastlavel) {
                 setIsBuyEnable(false)
                 setIsBuyVisible(false)
@@ -93,7 +93,7 @@ function SubPart5X({ level, ammount, lang }) {
                     setIsBuyEnable(false)
                 }
             }
-            const userX5Matrix = await Utils.contract.usersx5Matrix(userAddress, level).call();
+            const userX5Matrix = await Utils.contract.usersm1Matrix(userAddress, level).call();
             setReinvestCount(parseInt(userX5Matrix[3]._hex))
             const reinvestCountL = parseInt(userX5Matrix[3]._hex);
             if (userX5Matrix.length > 0) {

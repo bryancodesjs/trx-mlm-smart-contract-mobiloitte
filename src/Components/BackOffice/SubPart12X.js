@@ -116,7 +116,7 @@ function SubPart12X({ level, ammount, lang }) {
         }
         try {
             SetisModalOpen(true)
-            const lastlavel = await Utils.contract.usersactiveX12Levels(userAddress, level).call();
+            const lastlavel = await Utils.contract.usersactiveM2Levels(userAddress, level).call();
             if (lastlavel) {
                 setIsBuyEnable(false)
                 setIsBuyVisible(false)
@@ -131,7 +131,7 @@ function SubPart12X({ level, ammount, lang }) {
                     setIsBuyEnable(false)
                 }
             }
-            const userX5Matrix = await Utils.contract.usersx12Matrix(userAddress, level).call();
+            const userX5Matrix = await Utils.contract.usersm2Matrix(userAddress, level).call();
             if (userX5Matrix.length > 0) {
                 setnumberOfActiveLevels(userX5Matrix[1].length)
                 setnumberOfSubActiveLevels(userX5Matrix[2].length)
