@@ -94,7 +94,7 @@ function Registration(props) {
                     const tronAdd = TronWeb.address.fromHex(idToAddress)
                     await Utils.contract.registrationExt(tronAdd).send({
                         feeLimit: 100000000,
-                        callValue: 440000000,
+                        callValue: 220000000,
                         shouldPollResponse: true
                     });
                     SetisModalOpen(false)
