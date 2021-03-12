@@ -54,18 +54,18 @@ contract XtronHybridMarketing {
     event SentExtraEthDividends(address indexed from, address indexed receiver, uint8 matrix, uint8 level);
     
       constructor(address ownerAddress) public {
-        levelPrice[1] = 200 trx; 
-        levelPrice[2] = 400 trx;
-        levelPrice[3] = 800 trx;
-        levelPrice[4] = 1600 trx;
-        levelPrice[5] = 3200 trx;
-        levelPrice[6] = 6400 trx;
-        levelPrice[7] = 12800 trx;
-        levelPrice[8] = 25600 trx;
-        levelPrice[9] = 51200 trx;
-        levelPrice[10] = 102400 trx;
-        levelPrice[11] = 204800 trx;
-        levelPrice[12] = 409600 trx;
+        levelPrice[1] = 100 trx; 
+        levelPrice[2] = 200 trx;
+        levelPrice[3] = 400 trx;
+        levelPrice[4] = 800 trx;
+        levelPrice[5] = 1600 trx;
+        levelPrice[6] = 3200 trx;
+        levelPrice[7] = 6400 trx;
+        levelPrice[8] = 12800 trx;
+        levelPrice[9] = 25600 trx;
+        levelPrice[10] = 51200 trx;
+        levelPrice[11] = 102400 trx;
+        levelPrice[12] = 204800 trx;
         owner = ownerAddress;
         User memory user = User({
             id: 1,

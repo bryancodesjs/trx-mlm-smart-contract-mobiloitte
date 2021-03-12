@@ -582,6 +582,10 @@ details summary {
   background-color: #35ff69;
   border-color: #35ff69 !important;
 }
+.position_active_referral {
+  background-color: lightblue;
+  border-color: lightblue !important;
+}
 .position_reset i {
   position: relative;
   top: 6px;

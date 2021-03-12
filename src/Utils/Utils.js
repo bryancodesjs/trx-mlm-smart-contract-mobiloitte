@@ -48,8 +48,15 @@
 //const contract_address = "TD58SzWvCBqJEb2RChtvhe4UXjSk4og9mr"
 
 
+
 const contract_address = "TF9VPpAKcYpL4X5x12RWm3WuQSVkv529Rc"
 
+//Deployed by George
+//const contract_address = "TFa9JhkFctXPRB3xFnF9TfGKMiPcXVe5oB"
+
+
+//Contract with 50% discount in packages
+//const contract_address = "TQe5ExxEQpnBGBRkLu4mTDDGRLrudyugrD"
 //.env
 //const contract_address = process.env.REACT_APP_CONTRACT_ADDRESS
 

@@ -12,6 +12,17 @@ let toggleLevel = true
 function SubPart12X({ level, ammount, lang }) {
     const [numberOfActiveLevels, setnumberOfActiveLevels] = useState(0);
     const [numberOfSubActiveLevels, setnumberOfSubActiveLevels] = useState(0)
+    const [userX5MatrixDetail, setUserX5MatrixDetail] = useState([]);
+    const [userX5MatrixGroup1, setUserX5MatrixDetailGroup1] = useState([]);
+    const [userX5MatrixGroup2, setUserX5MatrixDetailGroup2] = useState([]);
+    const [userX5MatrixGroup3, setUserX5MatrixDetailGroup3] = useState([]);
+    
+    const [userX5MatrixDetailReferralFirstLevel, setUserX5MatrixDetailReferralFirstLevel] = useState([]);
+    const [userX5MatrixReferralFirstLevelGroup1, setUserX5MatrixDetailReferralFirstLevelGroup1] = useState([]);
+    const [userX5MatrixReferralFirstLevelGroup2, setUserX5MatrixDetailReferralFirstLevelGroup2] = useState([]);
+    const [userX5MatrixReferralFirstLevelGroup3, setUserX5MatrixDetailReferralFirstLevelGroup3] = useState([]);
+
+
     const [isBuyVisible, setIsBuyVisible] = useState(false);
     const [isBuyEnable, setIsBuyEnable] = useState(false)
     const [buyLevelLoader, setbuyLevelLoader] = useState(false)
@@ -132,9 +143,24 @@ function SubPart12X({ level, ammount, lang }) {
                 }
             }
             const userX5Matrix = await Utils.contract.usersm2Matrix(userAddress, level).call();
+            const userX5MatrixDetails = await Utils.contract.usersm2MatrixDetailsDirects(userAddress, level).call();
+            const userX5MatrixDetailsReferralFirstLevel = await Utils.contract.usersm2MatrixDetailsReferralFirstLevel(userAddress, level).call();
+            
+            setUserX5MatrixDetail(userX5MatrixDetails)
+            setUserX5MatrixDetailGroup1(userX5MatrixDetails[2])
+            setUserX5MatrixDetailGroup2(userX5MatrixDetails[3])
+            setUserX5MatrixDetailGroup3(userX5MatrixDetails[4])
+
+
+            setUserX5MatrixDetailReferralFirstLevel(userX5MatrixDetailsReferralFirstLevel)
+            setUserX5MatrixDetailReferralFirstLevelGroup1(userX5MatrixDetailsReferralFirstLevel[2])
+            setUserX5MatrixDetailReferralFirstLevelGroup2(userX5MatrixDetailsReferralFirstLevel[3])
+            setUserX5MatrixDetailReferralFirstLevelGroup3(userX5MatrixDetailsReferralFirstLevel[4])
+
             if (userX5Matrix.length > 0) {
                 setnumberOfActiveLevels(userX5Matrix[1].length)
                 setnumberOfSubActiveLevels(userX5Matrix[2].length)
+                
                 console.log("userX5Matrix[1].length", userX5Matrix[1].length)
                 console.log("userX5Matrix[2].length", userX5Matrix[2].length)
                 let sum = 0;
@@ -162,10 +188,90 @@ function SubPart12X({ level, ammount, lang }) {
         }
     }
 
+    //debugger;
+
+    //if (numberOfActiveLevels !== 0) { debugger;}
+    //if (numberOfActiveLevels !== 0) { debugger;}
+
     const getActiveLevels = [...Array(numberOfActiveLevels)].map((e, i) => <div key={i} className="position position_active"></div>)
+    //const getNonActiveLevels = [...Array(3 - numberOfActiveLevels)].map((e, i) => <div key={i} className="position"></div>)
+    //const getSubActiveLevels = [...Array(numberOfSubActiveLevels)].map((e, i) => <div key={i} className="subposition position_active"></div>)
+    //const getNonSubActiveLevels = [...Array(8 - numberOfSubActiveLevels)].map((e, i) => <div key={i} className="subposition"></div>)
+
+
+
+
+   // const filteredArray = array1.filter(value => array2.includes(value));
+
+    const positionCicladoIfRequired = ((userX5MatrixReferralFirstLevelGroup1.filter(x => x !== null).length + userX5MatrixReferralFirstLevelGroup2.filter(x => x !== null).length + userX5MatrixReferralFirstLevelGroup3.filter(x => x !== null).length) === 8) ? 'subposition reset-bg' : 'subposition'
+    
+
+    if (userX5MatrixReferralFirstLevelGroup1.length === 0) { userX5MatrixReferralFirstLevelGroup1.push(null); userX5MatrixReferralFirstLevelGroup1.push(null);  userX5MatrixReferralFirstLevelGroup1.push(null); }
+    if (userX5MatrixReferralFirstLevelGroup1.length === 1) { userX5MatrixReferralFirstLevelGroup1.push(null); userX5MatrixReferralFirstLevelGroup1.push(null); }
+    if (userX5MatrixReferralFirstLevelGroup1.length === 2) { userX5MatrixReferralFirstLevelGroup1.push(null); }
+
+    if (userX5MatrixReferralFirstLevelGroup2.length === 0) { userX5MatrixReferralFirstLevelGroup2.push(null); userX5MatrixReferralFirstLevelGroup2.push(null);  userX5MatrixReferralFirstLevelGroup2.push(null); }
+    if (userX5MatrixReferralFirstLevelGroup2.length === 1) { userX5MatrixReferralFirstLevelGroup2.push(null); userX5MatrixReferralFirstLevelGroup2.push(null); }
+    if (userX5MatrixReferralFirstLevelGroup2.length === 2) { userX5MatrixReferralFirstLevelGroup2.push(null); }
+
+    if (userX5MatrixReferralFirstLevelGroup3.length === 0) { userX5MatrixReferralFirstLevelGroup3.push(null); userX5MatrixReferralFirstLevelGroup3.push(null);  userX5MatrixReferralFirstLevelGroup3.push(null); }
+    if (userX5MatrixReferralFirstLevelGroup3.length === 1) { userX5MatrixReferralFirstLevelGroup3.push(null); userX5MatrixReferralFirstLevelGroup3.push(null); }
+    if (userX5MatrixReferralFirstLevelGroup3.length === 2) { userX5MatrixReferralFirstLevelGroup3.push(null); }
+
+
+//userX5MatrixReferralFirstLevelGroup1
+//userX5MatrixGroup1
+
+
+const m2group1 = [];
+for (var entry of userX5MatrixReferralFirstLevelGroup1) {
+  if (entry == null){
+        m2group1.push(null)
+ } else if (userX5MatrixGroup1.includes(entry)){
+        m2group1.push('green')
+ }else{
+        m2group1.push('blue')
+ }
+}
+
+const m2group2 = [];
+for (var entry of userX5MatrixReferralFirstLevelGroup2) {
+ if (entry == null){
+        m2group2.push(null)
+ } else if (userX5MatrixGroup2.includes(entry)){
+        m2group2.push('green')
+ }else{
+        m2group2.push('blue')
+ }
+}
+
+
+const m2group3 = [];
+for (var entry of userX5MatrixReferralFirstLevelGroup3) {
+if (entry == null){
+        m2group3.push(null)
+ } else if (userX5MatrixGroup3.includes(entry)){
+        m2group3.push('green')
+ }else{
+        m2group3.push('lightblue')
+ }
+}
+
+
+    //if (numberOfActiveLevels !== 0) { debugger;}
+
+    //const getSubActiveLevelsGroup1 = m2group1.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : 'subposition position_active' }></div>)
+    //const getSubActiveLevelsGroup2 = m2group2.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : 'subposition position_active' }></div>)
+    //const getSubActiveLevelsGroup3 = m2group3.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : 'subposition position_active' }></div>)
+//background-color:lightblue !important; border-color:lightblue !important
+    const getSubActiveLevelsGroup1 = m2group1.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : e === 'blue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
+    const getSubActiveLevelsGroup2 = m2group2.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : e === 'blue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
+    const getSubActiveLevelsGroup3 = m2group3.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : e === 'blue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
+
+
+
     const getNonActiveLevels = [...Array(3 - numberOfActiveLevels)].map((e, i) => <div key={i} className="position"></div>)
-    const getSubActiveLevels = [...Array(numberOfSubActiveLevels)].map((e, i) => <div key={i} className="subposition position_active"></div>)
-    const getNonSubActiveLevels = [...Array(8 - numberOfSubActiveLevels)].map((e, i) => <div key={i} className="subposition"></div>)
+    const getNonSubActiveLevels = [...Array(9)].map((e, i) => <div key={i} className="subposition"></div>)
     const getBuyIcon = isBuyEnable ?
         <i className="buy-iconX12 buy-icon" alt="buyIcon" onClick={() => FunBuyLevel(level, ammount)} ></i> :
         <i className="buy-iconX12" alt="buyIcon"></i>
@@ -181,14 +287,18 @@ function SubPart12X({ level, ammount, lang }) {
                 {isBuyVisible ? getBuyIcon : null}
                 <button className="btn btn-info basket_btn basket_active">{ammount} trx</button>
             </div>
-            <div className="box_positions_x12">
+            <div className="box_positions_x12">                
                 {getActiveLevels}
                 {getNonActiveLevels}
             </div>
             <div className="box_subpositions">
-                {getSubActiveLevels}
-                {getNonSubActiveLevels}
-                <div className="subposition reset-bg"></div>
+                {getSubActiveLevelsGroup1}
+                {getSubActiveLevelsGroup2}
+                {getSubActiveLevelsGroup3}
+                {/*getSubActiveLevels*/}
+                {/*getNonSubActiveLevels*/}
+                {/* TODO: This claass should be the last slot reset-bg */}
+               
             </div>
             <div className="flow_lines">
                 <div className="flow_line line_one_x12"></div>
