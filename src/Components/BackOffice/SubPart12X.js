@@ -258,6 +258,10 @@ if (entry == null){
 }
 
 
+//userX5MatrixDetail[1].length
+
+//userX5MatrixDetail[2].length + userX5MatrixDetailReferralFirstLevel[2].length + userX5MatrixDetailReferralFirstLevel[3].length + userX5MatrixDetailReferralFirstLevel[4].length 
+
     //if (numberOfActiveLevels !== 0) { debugger;}
 
     //const getSubActiveLevelsGroup1 = m2group1.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : 'subposition position_active' }></div>)
