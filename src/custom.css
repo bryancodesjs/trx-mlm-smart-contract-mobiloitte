@@ -819,7 +819,9 @@ details summary {
 }
 
 .buy-icon5X {
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
+  /* cursor: pointer !important; */
+  cursor: pointer !important;
   position: absolute;
   right: 0px;
   top: 10px;
@@ -835,11 +837,13 @@ details summary {
   -ms-transform: scale(1.5); /* IE 9 */
   -webkit-transform: scale(1.5); /* Safari 3-8 */
   transform: scale(1.5);
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .buy-iconX12 {
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
+  /* cursor: pointer !important; */
+  cursor: pointer !important;
   position: absolute;
   right: 40px;
   top: 10px;

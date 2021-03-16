@@ -58,7 +58,18 @@
 //.env
 //const contract_address = process.env.REACT_APP_CONTRACT_ADDRESS
 
-const contract_address = "TN8RbeAzW7YA5yuFYAVG42qjJR63DsE1ZN"
+//const contract_address = "TN8RbeAzW7YA5yuFYAVG42qjJR63DsE1ZN"
+
+//const contract_address = "TBLhDkhyXaYESKf9UvB1BQrVXPX6ubjdHo"
+//const contract_address = "THsHA3v4zeySDS7AWzavGmPf7yYMTQzxja"
+
+//Avoid buying next level
+//const contract_address = "TE1xmorEjAZYu2LaLiAff26KgSbrvWNSgU"
+
+
+//const contract_address = "TYqqp7vvPhhTFZWcpWgDm5Hf1EPSC55z97"
+
+const contract_address =  "TXWtPvKykN2QXip95PCej3biC5dVb9S4oy"
 
 const utils = {
     tronWeb: false,

@@ -36,13 +36,14 @@ function BackOfficeSideDashboard(props) {
 
 
     useEffect(async () => {
-        axios.get(`https://api.coinlore.net/api/ticker/?id=2713`)
+        axios.get(`https://api.coinlore.com/api/ticker/?id=2713`)
             .then(res => {
                 backofficeContextL.dispatchM({ type: 'SetusdValue', payload: res.data[0].price_usd })
             })
             .catch(err => {
                 console.log(err)
-                window.location.reload(false);
+                backofficeContextL.dispatchM({ type: 'SetusdValue', payload: '0' })
+                //window.location.reload(false);
             })
 
         await new Promise(resolve => {

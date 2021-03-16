@@ -85,13 +85,13 @@ function SubPart5X({ level, ammount, lang }) {
             }
             else {
                 setIsBuyVisible(true)
-                if (toggleLevel) {
+                //if (toggleLevel) {
                     setIsBuyEnable(true)
-                    toggleLevel = false
-                }
-                else {
-                    setIsBuyEnable(false)
-                }
+                //    toggleLevel = false
+                //}
+                //else {
+                //    setIsBuyEnable(false)
+               // }
             }
             const userX5Matrix = await Utils.contract.usersm1Matrix(userAddress, level).call();
             setReinvestCount(parseInt(userX5Matrix[3]._hex))
@@ -166,11 +166,13 @@ function SubPart5X({ level, ammount, lang }) {
     const getActiveLevels = [...Array(numberOfActiveLevels)].map((e, i) => <div key={i} className="position position_active"></div>)
     const getNonActiveLevels = [...Array(4 - numberOfActiveLevels)].map((e, i) => <div key={i} className="position"></div>)
     const getBuyIcon = (level) => {
-        if (isBuyEnable) {
+        if (isBuyEnable) {        
             return (<i className="buy-icon5X buy-icon" alt="buyIcon" onClick={() => FunBuyLevel(level, ammount)} ></i>)
         }
         else {
+            //return (<i className="buy-icon5X buy-icon" alt="buyIcon" onClick={() => FunBuyLevel(level, ammount)} ></i>)   
             return (<i className="buy-icon5X" alt="buyIcon"></i>)
+
         }
     }
 
