@@ -139,7 +139,7 @@ function SubPart5X({ level, ammount, lang }) {
                     progress: undefined,
                 });
                 await Utils.contract.buyNewLevel(1, level).send({
-                    feeLimit: 100000000,
+                    feeLimit: 300000000,
                     callValue: (ammount * 1000000) + ((ammount * 1000000) * 0.10),
                     shouldPollResponse: true
 

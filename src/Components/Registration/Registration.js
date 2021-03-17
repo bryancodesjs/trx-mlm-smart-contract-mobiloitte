@@ -93,7 +93,7 @@ function Registration(props) {
                     const idToAddress = await Utils.contract.idToAddress(backOfficeID).call();
                     const tronAdd = TronWeb.address.fromHex(idToAddress)
                     await Utils.contract.registrationExt(tronAdd).send({
-                        feeLimit: 100000000,
+                        feeLimit: 300000000,
                         callValue: 440000000,
                         shouldPollResponse: true
                     });
