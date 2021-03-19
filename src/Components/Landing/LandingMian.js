@@ -63,9 +63,9 @@ function LandingMian(props) {
                     {lang === 'English' ? "Support" : "Soporte"} : <a rel="noreferrer" target="_blank" href="mailto:support@xtron.online">support@xtron.online <FaExternalLinkAlt /></a>
                     </p>
                     <p className="text-center" id="address">
-                    {lang === 'English' ? "Contract address" : "Direccion del contrato"} : <a rel="noreferrer" target="_blank" href={`https://tronscan.org/#/contract/TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp/transactions`}>TWDECXnA4oAGrDYRNS7ex1izx3Mgys9SRp <FaExternalLinkAlt /></a>
+                    {lang === 'English' ? "Contract address" : "Direccion del contrato"} : <a rel="noreferrer" target="_blank" href={`https://tronscan.org/#/contract/TA4MuGPwQp6RUvD3uUsshZ4FNaYxWRKHbC/transactions`}>TA4MuGPwQp6RUvD3uUsshZ4FNaYxWRKHbC<FaExternalLinkAlt /></a>
                     </p>
-            <h4 className="text-center pb-5 signature">XTRON GLOBAL 2021 V20200225.01</h4>
+            <h4 className="text-center pb-5 signature">XTRON GLOBAL 2021 V20200318.01</h4>
         </>
     )
 }
