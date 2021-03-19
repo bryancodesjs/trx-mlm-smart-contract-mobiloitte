@@ -1,4 +1,5 @@
-const contract_address = "THxiHc4zmX4Q9b72FUK85fJCQWh2gbJEp9"
+//XTron Production Contract
+const contract_address = "TA4MuGPwQp6RUvD3uUsshZ4FNaYxWRKHbC"
 
 const utils = {
     tronWeb: false,
