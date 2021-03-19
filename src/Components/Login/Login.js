@@ -9,13 +9,11 @@ import ToastContainerCust from '../../Common/ToastContainerCust'
 import TronWeb from 'tronweb'
 import Utils from '../../Utils/Utils'
 import ReactGA from 'react-ga';
-ReactGA.initialize('G-6MQ8JWRM63'); /*Unique Google Analytics ID*/
-ReactGA.pageview(window.location.pathname + window.location.search);
+//ReactGA.initialize('G-6MQ8JWRM63'); /*Unique Google Analytics ID*/
+//ReactGA.pageview(window.location.pathname + window.location.search);
 
 
 const WEBSTORE_URL = 'https://chrome.google.com/webstore/detail/ibnejdfjmmkpcnlpebklmnkoeoihofec/';
-
-
 
 function switchTo1() {
     

@@ -819,8 +819,6 @@ details summary {
 }
 
 .buy-icon5X {
-  /* cursor: not-allowed; */
-  /* cursor: pointer !important; */
   cursor: pointer !important;
   position: absolute;
   right: 0px;
@@ -833,6 +831,35 @@ details summary {
   background: url(./assets/img/buyIcon.svg) no-repeat;
 }
 
+.buy-icon5X {
+  cursor: pointer !important;
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  z-index: 60;
+  display: block;
+  width: 50px;
+  height: 50px;  
+  transition: transform 0.5s;
+  background: url(./assets/img/buyIcon.svg) no-repeat;
+}
+
+.buy-icon5XDisabled {
+  cursor: pointer !important;
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  z-index: 60;
+  display: block;
+  width: 50px;
+  height: 50px;  
+  opacity: 0.5;
+  transition: transform 0.5s;
+  background: url(./assets/img/buyIcon.svg) no-repeat;
+}
+
+
+
 .buy-icon:hover {
   -ms-transform: scale(1.5); /* IE 9 */
   -webkit-transform: scale(1.5); /* Safari 3-8 */
@@ -840,9 +867,7 @@ details summary {
   cursor: pointer !important;
 }
 
-.buy-iconX12 {
-  /* cursor: not-allowed; */
-  /* cursor: pointer !important; */
+.buy-icon12X {
   cursor: pointer !important;
   position: absolute;
   right: 40px;
@@ -851,6 +876,20 @@ details summary {
   display: block;
   width: 50px;
   height: 50px;
+  transition: transform 0.5s;
+  background: url(./assets/img/buyIcon.svg) no-repeat;
+}
+
+.buy-icon12XDisabled {
+  cursor: pointer !important;
+  position: absolute;
+  right: 40px;
+  top: 10px;
+  z-index: 60;
+  display: block;
+  width: 50px;
+  height: 50px;
+  opacity: 0.5;
   transition: transform 0.5s;
   background: url(./assets/img/buyIcon.svg) no-repeat;
 }

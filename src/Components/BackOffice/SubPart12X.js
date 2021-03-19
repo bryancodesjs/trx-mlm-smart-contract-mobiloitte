@@ -10,11 +10,11 @@ import { toHex, fromHex } from 'tron-format-address'
 
 
 let toggleLevel = true
+let activeleLevel = 1
 
 function SubPart12X({ level, ammount, lang }) {
     const [numberOfActiveLevels, setnumberOfActiveLevels] = useState(0);
     const [numberOfSubActiveLevels, setnumberOfSubActiveLevels] = useState(0)
-    //const [userX5MatrixDetail, setUserX5MatrixDetail] = useState([]);
     const [userX5MatrixGroup1, setUserX5MatrixDetailGroup1] = useState([]);
     const [userX5MatrixGroup2, setUserX5MatrixDetailGroup2] = useState([]);
     const [userX5MatrixGroup3, setUserX5MatrixDetailGroup3] = useState([]);
@@ -24,7 +24,6 @@ function SubPart12X({ level, ammount, lang }) {
     const [userData, setUserData] = useState([]);
     const [userDataReferrals, setUserDataReferrals] = useState([]);
 
-    //const [userX5MatrixDetailReferralFirstLevel, setUserX5MatrixDetailReferralFirstLevel] = useState([]);
     const [userX5MatrixReferralFirstLevelGroup1, setUserX5MatrixDetailReferralFirstLevelGroup1] = useState([]);
     const [userX5MatrixReferralFirstLevelGroup2, setUserX5MatrixDetailReferralFirstLevelGroup2] = useState([]);
     const [userX5MatrixReferralFirstLevelGroup3, setUserX5MatrixDetailReferralFirstLevelGroup3] = useState([]);
@@ -32,6 +31,7 @@ function SubPart12X({ level, ammount, lang }) {
 
     const [isBuyVisible, setIsBuyVisible] = useState(false);
     const [isBuyEnable, setIsBuyEnable] = useState(false)
+    const [userCurrentlevel,setUserCurrentlevel] = useState(1);
     const [buyLevelLoader, setbuyLevelLoader] = useState(false)
     const [tronWeb, settronWeb] = useState({
         installed: false,
@@ -137,26 +137,26 @@ function SubPart12X({ level, ammount, lang }) {
         
         try {
             
-            SetisModalOpen(true)
-            
+            SetisModalOpen(true)            
+            const userCurrentlevelLocal = await Utils.contract.usersactiveM2Level(userAddress).call();
+            setUserCurrentlevel(userCurrentlevelLocal);
+
             const lastlavel = await Utils.contract.usersactiveM2Levels(userAddress, level).call();
-            
             if (lastlavel) {
                 setIsBuyEnable(false)
                 setIsBuyVisible(false)
+                activeleLevel = level;                
             }
             else {
                 setIsBuyVisible(true)
-                //if (toggleLevel) {
-                    setIsBuyEnable(true)
-                //    toggleLevel = false
-                //}
-                //else {
-                //    setIsBuyEnable(false)
-                //}
+                if (activeleLevel >= (level - 1)) {
+                    setIsBuyEnable(true)                
+                }
+                else {
+                    setIsBuyEnable(false)
+                }
             }
     
-    console.log(userAddress);
     
             const userX5Matrix = await Utils.contract.usersm2Matrix(userAddress, level).call();       
             try {
@@ -166,22 +166,17 @@ function SubPart12X({ level, ammount, lang }) {
                 for (var entry of userX5MatrixDetails01Local[4]) {
                     var user = await Utils.contract.getUserDataM2(fromHex(entry), level).call();
                     if (fromHex(user[1]) === userAddress){
-                        //userX5MatrixDetails01.push(user[1])
                         userX5MatrixDetails01.push(entry);
                     }
                 }
 
             } catch (error) {
-
-               // if (level===1){debugger};
             }
             try {
-                //var userX5MatrixDetails02 = await Utils.contract.usersm2MatrixDetailsDirects(userAddress, level, 1).call();
                 var userX5MatrixDetails02 = await Utils.contract.getUserDataM2(userAddress, level, 1).call();
             } catch (error) {
             }
             try {
-                //var userX5MatrixDetails03 = await Utils.contract.usersm2MatrixDetailsDirects(userAddress, level, 2).call();
                 var userX5MatrixDetails03 = await Utils.contract.getUserDataM2(userAddress, level, 2).call();
             } catch (error) {
             }
@@ -199,14 +194,11 @@ function SubPart12X({ level, ammount, lang }) {
             } catch (error) {
             }
             
-             // if (level===1){debugger};
-
            const userDataM1 = await Utils.contract.getUserDataM1(userAddress, level).call();
            const userDataM2 = await Utils.contract.getUserDataM2(userAddress, level).call();
            setUserData([userDataM1],[userDataM2]);
        
             
-
             var userDataM2User01 = null;
             var userDataM2User02 = null;
             var userDataM2User03 = null;
@@ -219,9 +211,7 @@ function SubPart12X({ level, ammount, lang }) {
                 setUserDataReferralsLocal.push(userDataM2User01)
 
 
-            } catch (error) {
-              //  if (level == 1){ debugger;}
-                
+            } catch (error) {                
             }
 
             try {
@@ -255,32 +245,14 @@ function SubPart12X({ level, ammount, lang }) {
             if (userDataFirstLevelColors.length === 0) { userDataFirstLevelColors.push(null); userDataFirstLevelColors.push(null); userDataFirstLevelColors.push(null);}
             if (userDataFirstLevelColors.length === 1) { userDataFirstLevelColors.push(null); userDataFirstLevelColors.push(null); }
             if (userDataFirstLevelColors.length === 2) { userDataFirstLevelColors.push(null); }
-            
-
-
-        
-            //userDataFirstLevelColors.push((userDataM1User01 === null) ? null : (userDataM1User01[1] === userDataM1User01[2]) ? 'green' : 'blue')
-            //userDataFirstLevelColors.push((userDataM1User02 === null) ? null : (userDataM1User02[1] === userDataM1User02[2]) ? 'green' : 'blue')
-            //userDataFirstLevelColors.push((userDataM1User03 === null) ? null : (userDataM1User03[1] === userDataM1User03[2]) ? 'green' : 'blue')
-        
+              
             setUserDataFirstLevel(userDataFirstLevelColors)
 
-            
-           // if (userDataM1.length !== 0) { debugger;}
-
-
-            ////setUserX5MatrixDetail(userX5MatrixDetails)
-            //try { setUserX5MatrixDetailGroup1(userX5MatrixDetails01[2]) } catch (error) {}
-            //try { setUserX5MatrixDetailGroup2(userX5MatrixDetails02[2]) } catch (error) {}
-            //try { setUserX5MatrixDetailGroup3(userX5MatrixDetails03[2]) } catch (error) {}
-
+    
             try { setUserX5MatrixDetailGroup1([userX5MatrixDetails01]) } catch (error) {}
             try { setUserX5MatrixDetailGroup2([userX5MatrixDetails02]) } catch (error) {}
             try { setUserX5MatrixDetailGroup3([userX5MatrixDetails03]) } catch (error) {}
 
-//if (level == 1){ debugger}
-
-            //setUserX5MatrixDetailReferralFirstLevel(userX5MatrixDetailsReferralFirstLevel)
             try { setUserX5MatrixDetailReferralFirstLevelGroup1(userX5MatrixDetailsReferralFirstLevel01[2]) } catch (error) { }
             try { setUserX5MatrixDetailReferralFirstLevelGroup2(userX5MatrixDetailsReferralFirstLevel02[2]) } catch (error) { }
             try { setUserX5MatrixDetailReferralFirstLevelGroup3(userX5MatrixDetailsReferralFirstLevel03[2]) } catch (error) { }
@@ -289,13 +261,9 @@ function SubPart12X({ level, ammount, lang }) {
                 setnumberOfActiveLevels(userX5Matrix[1].length)
                 setnumberOfSubActiveLevels(userX5Matrix[2].length)
                 
-                console.log("userX5Matrix[1].length", userX5Matrix[1].length)
-                console.log("userX5Matrix[2].length", userX5Matrix[2].length)
+
                 let sum = 0;
                 if (userX5Matrix[1].length > 0 && lastlavel) {
-                    // sum = parseFloat(ammount) + (parseFloat(userX5Matrix[1].length) * parseFloat(parseFloat(ammount) / 2) + (parseFloat(userX5Matrix[2].length) * (parseFloat(parseFloat(ammount) / 4))))
-                    // backofficeContextL.dispatchM({ type: 'change12x', payload: getFlooredFixed(sum, 3) })
-
                     sum = userX5Matrix[1].length + userX5Matrix[2].length
                     backofficeContextL.dispatchM({ type: 'partnerCountM2', payload: sum })
                 }
@@ -311,32 +279,14 @@ function SubPart12X({ level, ammount, lang }) {
             SetisModalOpen(false)
         }
         catch (err) {
-          // debugger;
             console.log(err)
             SetisModalOpen(false)
         }
     }
 
-    //debugger;
-
-    //if (numberOfActiveLevels !== 0) { debugger;}
-    //if (userDataFirstLevel !== undefined) { debugger;}
-
     const getActiveLevels = [...Array(numberOfActiveLevels)].map((e, i) => <div key={i} className="position position_active"></div>)
     const getActiveLevelsV2 = userDataFirstLevel.map((e, i) => <div key={i} id={e} className={ e === null ? 'position' : e === 'blue' ? 'position position_active_referral' : 'position position_active' }></div>)
-
-    //const getNonActiveLevels = [...Array(3 - numberOfActiveLevels)].map((e, i) => <div key={i} className="position"></div>)
-    //const getSubActiveLevels = [...Array(numberOfSubActiveLevels)].map((e, i) => <div key={i} className="subposition position_active"></div>)
-    //const getNonSubActiveLevels = [...Array(8 - numberOfSubActiveLevels)].map((e, i) => <div key={i} className="subposition"></div>)
-
-
-
-
-   // const filteredArray = array1.filter(value => array2.includes(value));
-
-
     
-
     if (userX5MatrixReferralFirstLevelGroup1.length === 0) { userX5MatrixReferralFirstLevelGroup1.push(null); userX5MatrixReferralFirstLevelGroup1.push(null);  userX5MatrixReferralFirstLevelGroup1.push(null); }
     if (userX5MatrixReferralFirstLevelGroup1.length === 1) { userX5MatrixReferralFirstLevelGroup1.push(null); userX5MatrixReferralFirstLevelGroup1.push(null); }
     if (userX5MatrixReferralFirstLevelGroup1.length === 2) { userX5MatrixReferralFirstLevelGroup1.push(null); }
@@ -348,18 +298,6 @@ function SubPart12X({ level, ammount, lang }) {
     if (userX5MatrixReferralFirstLevelGroup3.length === 0) { userX5MatrixReferralFirstLevelGroup3.push(null); userX5MatrixReferralFirstLevelGroup3.push(null);  userX5MatrixReferralFirstLevelGroup3.push(null); }
     if (userX5MatrixReferralFirstLevelGroup3.length === 1) { userX5MatrixReferralFirstLevelGroup3.push(null); userX5MatrixReferralFirstLevelGroup3.push(null); }
     if (userX5MatrixReferralFirstLevelGroup3.length === 2) { userX5MatrixReferralFirstLevelGroup3.push(null); }
-
-
-//userX5MatrixReferralFirstLevelGroup1
-//userX5MatrixGroup1
-
-if (level == 1){
-    //if (userX5MatrixGroup1.length !== 0) { debugger; }
-    //if (userX5MatrixReferralFirstLevelGroup3[2] !== null ) { debugger;}
-}
-
-
-//userDataReferrals
 
 const m2group1 = [];
 const m2group2 = [];
@@ -376,14 +314,12 @@ if (userDataReferrals.length !== -1 && userX5MatrixGroup1[0] !== undefined )
     userX5MatrixReferralFirstLevelGroup1Local = userDataReferrals[0][3];
     }catch(error)
     {
-        //userX5MatrixReferralFirstLevelGroup1Local = [null,null,null]
     }
 
     try {
     userX5MatrixReferralFirstLevelGroup2Local = userDataReferrals[1][3];
     }catch(error)
     {
-        //userX5MatrixReferralFirstLevelGroup2Local = [null,null,null]
     }
 
     try {
@@ -408,10 +344,8 @@ if (userX5MatrixReferralFirstLevelGroup3Local.length === 0) { userX5MatrixReferr
 if (userX5MatrixReferralFirstLevelGroup3Local.length === 1) { userX5MatrixReferralFirstLevelGroup3Local.push(null); userX5MatrixReferralFirstLevelGroup3Local.push(null); }
 if (userX5MatrixReferralFirstLevelGroup3Local.length === 2) { userX5MatrixReferralFirstLevelGroup3Local.push(null); }
 
-console.log("Accounts"+JSON.stringify(userX5MatrixGroup1[0]))
 
 for (var entry of userX5MatrixReferralFirstLevelGroup1Local) {
-console.log("Entry: "+entry)    
   if (entry === null) {
         m2group1.push(null)
 } else if (userX5MatrixGroup1[0].includes(entry)){
@@ -421,9 +355,7 @@ console.log("Entry: "+entry)
  }
 }
 
-
 for (var entry of userX5MatrixReferralFirstLevelGroup2Local) {
-console.log("Entry: "+entry)
  if (entry === null){
         m2group2.push(null)
 } else if (userX5MatrixGroup1[0].includes(entry)){        
@@ -433,10 +365,8 @@ console.log("Entry: "+entry)
  }
 }
 
-//if (level == 1){debugger;}
 
 for (var entry of userX5MatrixReferralFirstLevelGroup3Local) {
-console.log("Entry: "+entry)
 if (entry === null){
         m2group3.push(null)
 } else if (userX5MatrixGroup1[0].includes(entry)){
@@ -453,23 +383,9 @@ try {
 }   catch (err) {
 }
  
-
-
 }
 
 
-//userX5MatrixDetail[1].length
-
-//userX5MatrixDetail[2].length + userX5MatrixDetailReferralFirstLevel[2].length + userX5MatrixDetailReferralFirstLevel[3].length + userX5MatrixDetailReferralFirstLevel[4].length 
-
-
-
-
-  //userData
-    //const getSubActiveLevelsGroup1 = m2group1.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : 'subposition position_active' }></div>)
-    //const getSubActiveLevelsGroup2 = m2group2.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : 'subposition position_active' }></div>)
-    //const getSubActiveLevelsGroup3 = m2group3.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : 'subposition position_active' }></div>)
-//background-color:lightblue !important; border-color:lightblue !important
     const getSubActiveLevelsGroup1 = m2group1.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
     const getSubActiveLevelsGroup2 = m2group2.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
     const getSubActiveLevelsGroup3 = m2group3.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
@@ -477,18 +393,14 @@ try {
 
 
     const getNonActiveLevels = [...Array(3 - numberOfActiveLevels)].map((e, i) => <div key={i} className="position"></div>)
-    const getNonSubActiveLevels = [...Array(9)].map((e, i) => <div key={i} className="subposition"></div>)
+    const getNonSubActiveLevels = [...Array(9)].map((e, i) => <div key={i} className="subposition"></div>)   
+ 
+    var getBuyIconM2 = <i className="buy-icon12XDisabled" alt="buyIcon"></i>
+            
+    if ((userCurrentlevel + 1) >= level ){
+        getBuyIconM2 = <i className="buy-icon12X buy-icon" alt="buyIcon" onClick={() => FunBuyLevel(level, ammount)} ></i>
+    }
     
-    //const getBuyIcon =   <i className="buy-iconX12 buy-icon" alt="buyIcon" onClick={() => FunBuyLevel(level, ammount)} ></i>
-    
-    const getBuyIcon = isBuyEnable ?
-        <i className="buy-iconX12 buy-icon" alt="buyIcon" onClick={() => FunBuyLevel(level, ammount)} ></i> :
-        <i className="buy-iconX12" alt="buyIcon"></i>
-
-    //const getBuyIcon = isBuyVisible ?
-    //    <i className="buy-iconX12 buy-icon" alt="buyIcon" onClick={() => FunBuyLevel(level, ammount)} ></i> :
-    //    <i className="buy-iconX12" alt="buyIcon"></i>
-
     return (
         <div className="matrix_box_x12">
             <ToastContainerCust />
@@ -497,7 +409,7 @@ try {
             {/* <!--single matrix box--> */}
             <div className="box_basket" style={{ position: "relative" }}>
                 <div className="box_number_x12" id="box_number_x12">{level}</div>
-                {isBuyVisible ? getBuyIcon : null}
+                {isBuyVisible ? getBuyIconM2 : null}
                 <button className="btn btn-info basket_btn basket_active">{ammount} trx</button>
             </div>
             <div className="box_positions_x12">                

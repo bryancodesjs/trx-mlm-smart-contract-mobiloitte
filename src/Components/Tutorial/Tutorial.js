@@ -12,8 +12,8 @@ import { FaUsers, FaRegCopy } from "react-icons/fa";
 import MyNav from '../BackOffice/Nav'
 //import { Link } from 'react-router-dom';
 import ReactGA from 'react-ga';
-ReactGA.initialize('G-6MQ8JWRM63'); /*Unique Google Analytics ID*/
-ReactGA.pageview(window.location.pathname + window.location.search);
+//ReactGA.initialize('GTM-WZM9SPD'); /*Unique Google Analytics ID*/
+//ReactGA.pageview(window.location.pathname + window.location.search);
 
 
 function Tutoril() {

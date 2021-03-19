@@ -9,15 +9,17 @@ import { MyClockLoader } from '../../Common/Loader'
 import { FaUsers } from "react-icons/fa";
 import { FiRefreshCcw } from "react-icons/fi";
 
-
 let toggleLevel = true
+let activeleLevelM1 = 1
 
 function SubPart5X({ level, ammount, lang }) {
     const [numberOfActiveLevels, setnumberOfActiveLevels] = useState(0);
     const backofficeContextL = useContext(BackofficeContext)
     const [isModalOpen, SetisModalOpen] = useState(false)
-    const [isBuyVisible, setIsBuyVisible] = useState(false);
-    const [isBuyEnable, setIsBuyEnable] = useState(false)
+    const [isBuyVisible, setIsBuyVisible] = useState(false);    
+    //const [isBuyEnable, setIsBuyEnable] = useState(false)
+    const [userCurrentlevel,setUserCurrentlevel] = useState(1);
+    const [isBuyEnableM1, setIsBuyEnableM1] = useState(false)    
     const [buyLevelLoader, setbuyLevelLoader] = useState(false)
     const [reinvestCount, setReinvestCount] = useState(0)
     const [tronWeb, settronWeb] = useState({
@@ -77,21 +79,24 @@ function SubPart5X({ level, ammount, lang }) {
             userAddress = localStorage.getItem('backOfficeID')
         }
         try {
-            SetisModalOpen(true)
+            SetisModalOpen(true)            
+            const userCurrentlevelLocal = await Utils.contract.usersactiveM1Level(userAddress).call();
+            setUserCurrentlevel(userCurrentlevelLocal);
+
             const lastlavel = await Utils.contract.usersactiveM1Levels(userAddress, level).call();
             if (lastlavel) {
-                setIsBuyEnable(false)
+                setIsBuyEnableM1(false)
                 setIsBuyVisible(false)
+                activeleLevelM1 = level;
             }
             else {
                 setIsBuyVisible(true)
-                //if (toggleLevel) {
-                    setIsBuyEnable(true)
-                //    toggleLevel = false
-                //}
-                //else {
-                //    setIsBuyEnable(false)
-               // }
+                if (activeleLevelM1 >= (level - 1)) {
+                    setIsBuyEnableM1(true)                
+                }
+                else {
+                    setIsBuyEnableM1(false)
+                }
             }
             const userX5Matrix = await Utils.contract.usersm1Matrix(userAddress, level).call();
             setReinvestCount(parseInt(userX5Matrix[3]._hex))
@@ -165,15 +170,12 @@ function SubPart5X({ level, ammount, lang }) {
 
     const getActiveLevels = [...Array(numberOfActiveLevels)].map((e, i) => <div key={i} className="position position_active"></div>)
     const getNonActiveLevels = [...Array(4 - numberOfActiveLevels)].map((e, i) => <div key={i} className="position"></div>)
-    const getBuyIcon = (level) => {
-        if (isBuyEnable) {        
-            return (<i className="buy-icon5X buy-icon" alt="buyIcon" onClick={() => FunBuyLevel(level, ammount)} ></i>)
-        }
-        else {
-            //return (<i className="buy-icon5X buy-icon" alt="buyIcon" onClick={() => FunBuyLevel(level, ammount)} ></i>)   
-            return (<i className="buy-icon5X" alt="buyIcon"></i>)
 
-        }
+
+    var getBuyIconM1 = <i className="buy-icon5XDisabled" alt="buyIcon"></i>
+            
+    if ((userCurrentlevel + 1) >= level ){
+        getBuyIconM1 = <i className="buy-icon5X buy-icon" alt="buyIcon" onClick={() => FunBuyLevel(level, ammount)} ></i>
     }
 
     return (
@@ -184,7 +186,7 @@ function SubPart5X({ level, ammount, lang }) {
                 <ToastContainerCust />
                 <div className={isBuyVisible ? "box_basket" : "box_basket activeLevel"} style={{ position: "relative" }}>
                     <div className="box_number" id="box_number">{level}</div>
-                    {isBuyVisible ? getBuyIcon(level) : null}
+                    {isBuyVisible ? getBuyIconM1 : null}
                     <button className="btn btn-info basket_btn basket_active">{ammount} trx</button>
                 </div>
                 <div className="box_positions">
