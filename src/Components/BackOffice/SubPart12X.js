@@ -12,6 +12,16 @@ import { toHex, fromHex } from 'tron-format-address'
 let toggleLevel = true
 let activeleLevel = 1
 
+function contractCall(request,retries){
+    for (let i = 0; i < request; i++) {
+      console.log(`Retrying... ${ i }`)
+      request.call();
+    }
+}
+
+function contractCallUsersactiveM2Level(userAddress){
+ return Utils.contract.usersactiveM2Level(userAddress).call();    
+}
 function SubPart12X({ level, ammount, lang }) {
     const [numberOfActiveLevels, setnumberOfActiveLevels] = useState(0);
     const [numberOfSubActiveLevels, setnumberOfSubActiveLevels] = useState(0)
@@ -83,6 +93,7 @@ function SubPart12X({ level, ammount, lang }) {
             })
             await Utils.setTronWeb(window.tronWeb);
             showLevelDetails()
+
         })()
     }, [])
 
@@ -127,6 +138,8 @@ function SubPart12X({ level, ammount, lang }) {
         }
     }
 
+
+
     const showLevelDetails = async () => {
         const { toHex, fromHex } = require('tron-format-address'); 
         let userAddress = window.tronWeb.defaultAddress.base58        
@@ -138,7 +151,21 @@ function SubPart12X({ level, ammount, lang }) {
         try {
             
             SetisModalOpen(true)            
-            const userCurrentlevelLocal = await Utils.contract.usersactiveM2Level(userAddress).call();
+            //const userCurrentlevelLocal = await Utils.contract.usersactiveM2Level(userAddress).call();
+            
+            let userCurrentlevelLocal = null;   
+
+
+            try {
+                userCurrentlevelLocal = await Utils.contract.usersactiveM2Level(userAddress).call();    
+            }catch(err)
+            {                
+                //contractCall(await Utils.contract.usersactiveM2Level(userAddress),3);
+                //console.log('Error: Calling ShowLevel');
+                //setTimeout(showLevelDetails,1000);
+                //throw "Error pulling data M2";
+            }
+
             setUserCurrentlevel(userCurrentlevelLocal);
 
             const lastlavel = await Utils.contract.usersactiveM2Levels(userAddress, level).call();
@@ -150,7 +177,8 @@ function SubPart12X({ level, ammount, lang }) {
             else {
                 setIsBuyVisible(true)
                 if (activeleLevel >= (level - 1)) {
-                    setIsBuyEnable(true)                
+                    setIsBuyEnable(true)
+                    return false;               
                 }
                 else {
                     setIsBuyEnable(false)

@@ -70,7 +70,16 @@ function SubPart5X({ level, ammount, lang }) {
             }, 100);
         })
         await Utils.setTronWeb(window.tronWeb);
-        showLevelDetails()
+        //showLevelDetails()
+
+
+        try {
+            showLevelDetails()
+        }catch(err)
+        {
+            debugger
+        }
+
     }, []);
 
     const showLevelDetails = async () => {
@@ -80,7 +89,17 @@ function SubPart5X({ level, ammount, lang }) {
         }
         try {
             SetisModalOpen(true)            
-            const userCurrentlevelLocal = await Utils.contract.usersactiveM1Level(userAddress).call();
+            let userCurrentlevelLocal = null;    
+            try {
+                userCurrentlevelLocal = await Utils.contract.usersactiveM1Level(userAddress).call();    
+            }catch(err)
+            {
+                console.log('Error: Calling ShowLevel M1');
+                setTimeout(showLevelDetails,1000);
+               // throw "Error pulling data M1";
+            }
+            
+
             setUserCurrentlevel(userCurrentlevelLocal);
 
             const lastlavel = await Utils.contract.usersactiveM1Levels(userAddress, level).call();

@@ -3,6 +3,69 @@ import x5matrix from '../../assets/img/m1.png'
 import SubPart5X from './SubPart5X'
 import { FaUsers } from "react-icons/fa";
 import { FiRefreshCcw } from "react-icons/fi";
+import Delayed from '../../Common/Delayed';
+import {BrowserView, MobileView, isMobile} from 'react-device-detect';
+
+
+function showLevel1PC(props){
+return( <>
+        <SubPart5X level={1} ammount={"200"}   lang={props.lang && props.lang} />
+        <SubPart5X level={2} ammount={"400"}   lang={props.lang && props.lang} />
+        <SubPart5X level={3} ammount={"800"}   lang={props.lang && props.lang} />
+        <SubPart5X level={4} ammount={"1600"}  lang={props.lang && props.lang} />
+        <SubPart5X level={5} ammount={"3200"}  lang={props.lang && props.lang} />
+        <SubPart5X level={6} ammount={"6400"}  lang={props.lang && props.lang} />
+        <SubPart5X level={7} ammount={"12800"} lang={props.lang && props.lang} />
+        <SubPart5X level={8} ammount={"25600"} lang={props.lang && props.lang} />
+        <SubPart5X level={9} ammount={"51200"} lang={props.lang && props.lang} />
+        <SubPart5X level={10} ammount={"102400"} lang={props.lang && props.lang} />
+        <SubPart5X level={11} ammount={"204800"} lang={props.lang && props.lang} />
+        <SubPart5X level={12} ammount={"409600"} lang={props.lang && props.lang} />)
+    </>
+    );
+}
+
+function showLevel1Mobile(props){
+ return ( <>
+            <Delayed waitBeforeShow={500}>
+                <SubPart5X level={1} ammount={"200"}   lang={props.lang && props.lang} />
+                <Delayed waitBeforeShow={5000}>
+                    <SubPart5X level={2} ammount={"400"} lang={props.lang && props.lang} />
+                    <Delayed waitBeforeShow={500}>
+                        <SubPart5X level={3} ammount={"800"} lang={props.lang && props.lang} />
+                        <Delayed waitBeforeShow={500}>
+                            <SubPart5X  level={4} ammount={"1600"}  lang={props.lang && props.lang} />
+                            <Delayed waitBeforeShow={500}>
+                                <SubPart5X  level={5} ammount={"3200"}  lang={props.lang && props.lang} />
+                                <Delayed waitBeforeShow={500}>
+                                    <SubPart5X  level={6} ammount={"6400"}  lang={props.lang && props.lang} />
+                                    <Delayed waitBeforeShow={500}>
+                                        <SubPart5X  level={7} ammount={"12800"} lang={props.lang && props.lang} />
+                                        <Delayed waitBeforeShow={500}>
+                                            <SubPart5X  level={8} ammount={"25600"} lang={props.lang && props.lang} />
+                                            <Delayed waitBeforeShow={500}>
+                                                <SubPart5X  level={9} ammount={"51200"} lang={props.lang && props.lang} />
+                                                <Delayed waitBeforeShow={500}>
+                                                    <SubPart5X  level={10} ammount={"102400"} lang={props.lang && props.lang} />
+                                                    <Delayed waitBeforeShow={500}>
+                                                        <SubPart5X  level={11} ammount={"204800"} lang={props.lang && props.lang} />
+                                                        <Delayed waitBeforeShow={500}>
+                                                            <SubPart5X level={12} ammount={"409600"} lang={props.lang && props.lang} />
+                                                        </Delayed>
+                                                    </Delayed>
+                                                </Delayed>
+                                            </Delayed>
+                                        </Delayed>
+                                    </Delayed>
+                                </Delayed>
+                            </Delayed>
+                        </Delayed>
+                    </Delayed>
+                </Delayed>
+            </Delayed>
+        </>
+        );
+}
 
 function BackOfficeStatusFor5x(props) {
     return (
@@ -13,18 +76,11 @@ function BackOfficeStatusFor5x(props) {
                     <img src={x5matrix} id="title_container_img" alt="x5matrix" />
                 </div>
                 <div className="boxes_wraper">
-                    <SubPart5X level={1} ammount={"200"} lang={props.lang && props.lang} />
-                    <SubPart5X level={2} ammount={"400"} lang={props.lang && props.lang} />
-                    <SubPart5X level={3} ammount={"800"} lang={props.lang && props.lang} />
-                    <SubPart5X level={4} ammount={"1600"} lang={props.lang && props.lang} />
-                    <SubPart5X level={5} ammount={"3200"} lang={props.lang && props.lang} />
-                    <SubPart5X level={6} ammount={"6400"} lang={props.lang && props.lang} />
-                    <SubPart5X level={7} ammount={"12800"} lang={props.lang && props.lang} />
-                    <SubPart5X level={8} ammount={"25600"} lang={props.lang && props.lang} />
-                    <SubPart5X level={9} ammount={"51200"} lang={props.lang && props.lang} />
-                    <SubPart5X level={10} ammount={"102400"} lang={props.lang && props.lang} />
-                    <SubPart5X level={11} ammount={"204800"} lang={props.lang && props.lang} />
-                    <SubPart5X level={12} ammount={"409600"} lang={props.lang && props.lang} />
+                
+                { !(isMobile) ? showLevel1PC(props) : showLevel1Mobile(props) }
+
+
+
                 </div>
                 <div className="Tips">
                     <div className="d-flex align-items-center tip"><div className="mr10 position mini-position position_active" /> You have earned commission from this slot.</div>
