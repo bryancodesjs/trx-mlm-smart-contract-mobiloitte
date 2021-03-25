@@ -5,14 +5,26 @@ import Delayed from '../../Common/Delayed';
 import {BrowserView, MobileView, isMobile} from 'react-device-detect';
 
 
-function showLevel2PC(props){
+function showLevel2PC2(props){
 return( <>
         <SubPart12X level={1} ammount={"200"}   lang={props.lang && props.lang} />
         <SubPart12X level={2} ammount={"400"}   lang={props.lang && props.lang} />
-        <SubPart12X level={3} ammount={"800"}   lang={props.lang && props.lang} />
-        <SubPart12X level={4} ammount={"1600"}  lang={props.lang && props.lang} />
-        <SubPart12X level={5} ammount={"3200"}  lang={props.lang && props.lang} />
-        <SubPart12X level={6} ammount={"6400"}  lang={props.lang && props.lang} />
+    </>
+    );
+}
+
+function showLevel2PC(props){
+return( <>
+       <Delayed waitBeforeShow={500}>
+        <SubPart12X level={1} ammount={"200"}   lang={props.lang && props.lang} />       
+            <Delayed waitBeforeShow={3500}>
+            <SubPart12X level={2} ammount={"400"}   lang={props.lang && props.lang} />
+            <SubPart12X level={3} ammount={"800"}   lang={props.lang && props.lang} />
+            <SubPart12X level={4} ammount={"1600"}  lang={props.lang && props.lang} />
+            <SubPart12X level={5} ammount={"3200"}  lang={props.lang && props.lang} />
+            <SubPart12X level={6} ammount={"6400"}  lang={props.lang && props.lang} />
+            </Delayed>
+        </Delayed>
         <Delayed waitBeforeShow={5000}>
             <SubPart12X level={7} ammount={"12800"} lang={props.lang && props.lang} />
             <SubPart12X level={8} ammount={"25600"} lang={props.lang && props.lang} />

@@ -313,7 +313,7 @@ function SubPart12X({ level, ammount, lang }) {
     }
 
     const getActiveLevels = [...Array(numberOfActiveLevels)].map((e, i) => <div key={i} className="position position_active"></div>)
-    const getActiveLevelsV2 = userDataFirstLevel.map((e, i) => <div key={i} id={e} className={ e === null ? 'position' : e === 'blue' ? 'position position_active_referral' : 'position position_active' }></div>)
+    const getActiveLevelsV2 = userDataFirstLevel.map((e, i) => <div key2={`1-${ i }`} key={`1-${ i }`}  id={e} className={ e === null ? 'position' : e === 'blue' ? 'position position_active_referral' : 'position position_active' }></div>)
     
     if (userX5MatrixReferralFirstLevelGroup1.length === 0) { userX5MatrixReferralFirstLevelGroup1.push(null); userX5MatrixReferralFirstLevelGroup1.push(null);  userX5MatrixReferralFirstLevelGroup1.push(null); }
     if (userX5MatrixReferralFirstLevelGroup1.length === 1) { userX5MatrixReferralFirstLevelGroup1.push(null); userX5MatrixReferralFirstLevelGroup1.push(null); }
@@ -414,15 +414,14 @@ try {
 }
 
 
-    const getSubActiveLevelsGroup1 = m2group1.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
-    const getSubActiveLevelsGroup2 = m2group2.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
-    const getSubActiveLevelsGroup3 = m2group3.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
 
+    const getSubActiveLevelsGroup1 = m2group1.map((e, i) => <div key2={`2-${ i     }`} key={`2-${ i }`}     id={`2-${ i }`}     className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
+    const getSubActiveLevelsGroup2 = m2group2.map((e, i) => <div key2={`2-${ i + 3 }`} key={`2-${ i + 3 }`} id={`2-${ i + 3 }`} className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
+    const getSubActiveLevelsGroup3 = m2group3.map((e, i) => <div key2={`2-${ i + 6 }`} key={`2-${ i + 6 }`} id={`2-${ i + 6 }`} className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
 
-
-    const getNonActiveLevels = [...Array(3 - numberOfActiveLevels)].map((e, i) => <div key={i} className="position"></div>)
-    const getNonSubActiveLevels = [...Array(9)].map((e, i) => <div key={i} className="subposition"></div>)   
- 
+    const getNonActiveLevels    = [...Array(3 - numberOfActiveLevels)].map((e, i) => <div id={`1-${ i }`}  key={`1-${ i }`} key2={`1-${ i }`} className="position"></div>)
+    const getNonSubActiveLevels = [...Array(9)].map((e, i) => <div id={`2-${ i }`} key={`2-${ i }`}  key2={`2-${ i }`} className="subposition"></div>)   
+    
     var getBuyIconM2 = <i className="buy-icon12XDisabled" alt="buyIcon"></i>
             
     if ((userCurrentlevel + 1) >= level ){
@@ -440,17 +439,23 @@ try {
                 {isBuyVisible ? getBuyIconM2 : null}
                 <button className="btn btn-info basket_btn basket_active">{ammount} trx</button>
             </div>
-            <div className="box_positions_x12">                
-                {getActiveLevelsV2}
+            <div className="box_positions_x12"> 
+
+                { (getActiveLevelsV2.length === 0) ? getNonActiveLevels : getActiveLevelsV2 }
                 {/*getActiveLevels*/}
                 {/*getNonActiveLevels*/}
             </div>
             <div className="box_subpositions">
-                {getSubActiveLevelsGroup1}
-                {getSubActiveLevelsGroup2}
-                {getSubActiveLevelsGroup3}
-                {/*getSubActiveLevels*/}
+                { (getSubActiveLevelsGroup1.length ===  0 && getSubActiveLevelsGroup2.length === 0 && getSubActiveLevelsGroup3.length === 0) ? getNonSubActiveLevels : null }
+                { ((getSubActiveLevelsGroup1.length === 0 || getSubActiveLevelsGroup2.length === 0 || getSubActiveLevelsGroup3.length === 0)) ? null : getSubActiveLevelsGroup1 }
+                { ((getSubActiveLevelsGroup1.length === 0 || getSubActiveLevelsGroup2.length === 0 || getSubActiveLevelsGroup3.length === 0)) ? null : getSubActiveLevelsGroup2 }
+                { ((getSubActiveLevelsGroup1.length === 0 || getSubActiveLevelsGroup2.length === 0 || getSubActiveLevelsGroup3.length === 0)) ? null : getSubActiveLevelsGroup3 }
                 {/*getNonSubActiveLevels*/}
+                {/*getSubActiveLevelsGroup1*/}
+                {/*getSubActiveLevelsGroup2*/}
+                {/*getSubActiveLevelsGroup3*/}
+                {/*getSubActiveLevels*/}
+                
                 {/* TODO: This claass should be the last slot reset-bg */}
                
             </div>
