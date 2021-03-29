@@ -9,6 +9,11 @@ import { MyClockLoader } from '../../Common/Loader'
 import { FaUsers } from "react-icons/fa";
 import { FiRefreshCcw } from "react-icons/fi";
 
+import mixpanel from 'mixpanel-browser';
+import { MixpanelProvider, MixpanelConsumer } from 'react-mixpanel';
+mixpanel.init("70333a3349b80fceba9aecae1a0ee1ee");
+
+
 let toggleLevel = true
 let activeleLevelM1 = 1
 
@@ -94,8 +99,11 @@ function SubPart5X({ level, ammount, lang }) {
                 userCurrentlevelLocal = await Utils.contract.usersactiveM1Level(userAddress).call();    
             }catch(err)
             {
-                console.log('Error: Calling ShowLevel M1');
-                setTimeout(showLevelDetails,1000);
+
+                userCurrentlevelLocal = await Utils.contract.usersactiveM1Level(userAddress).call();
+                
+                //console.log('Error: Calling ShowLevel M1');
+                //setTimeout(showLevelDetails,1000);
                // throw "Error pulling data M1";
             }
             
@@ -169,6 +177,15 @@ function SubPart5X({ level, ammount, lang }) {
 
                 });
                 setbuyLevelLoader(false)
+
+                try{
+                    mixpanel.identify(window.tronWeb.defaultAddress.base58);
+                    mixpanel.track("BuyLevel",  { "matriz": "M1", "level": level, "value": ammount, "nickname": window.tronWeb.defaultAddress.name});                       
+                }catch(err){
+
+                }
+                
+
                 window.location.reload(false);
 
             } catch (error) {

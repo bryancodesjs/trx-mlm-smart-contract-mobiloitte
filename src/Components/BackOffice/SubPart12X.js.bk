@@ -7,9 +7,7 @@ import Utils from '../../Utils/Utils'
 import Loader from '../../Common/Loader'
 import { MyClockLoader } from '../../Common/Loader'
 import { toHex, fromHex } from 'tron-format-address'
-import mixpanel from 'mixpanel-browser';
-import { MixpanelProvider, MixpanelConsumer } from 'react-mixpanel';
-mixpanel.init("70333a3349b80fceba9aecae1a0ee1ee");
+import Cookies from 'universal-cookie';
 
 let toggleLevel = true
 let activeleLevel = 1
@@ -51,6 +49,8 @@ function SubPart12X({ level, ammount, lang }) {
     })
     const backofficeContextL = useContext(BackofficeContext)
     const [isModalOpen, SetisModalOpen] = useState(false)
+
+
 
     function getFlooredFixed(v, d) {
         return (Math.floor(v * Math.pow(10, d)) / Math.pow(10, d)).toFixed(d);
@@ -123,15 +123,6 @@ function SubPart12X({ level, ammount, lang }) {
                     shouldPollResponse: true
                 });
                 setbuyLevelLoader(false)
-
-                try{
-                    mixpanel.identify(window.tronWeb.defaultAddress.base58);
-                    mixpanel.track("BuyLevel",  { "matriz": "M2", "level": level, "value": ammount, "nickname": window.tronWeb.defaultAddress.name});                       
-                }catch(err){
-
-                }
-
-
                 window.location.reload(false);
             } catch (error) {
                 console.log(error);
@@ -153,6 +144,8 @@ function SubPart12X({ level, ammount, lang }) {
 
     const showLevelDetails = async () => {
         const { toHex, fromHex } = require('tron-format-address'); 
+        const cookies = new Cookies();
+
         let userAddress = window.tronWeb.defaultAddress.base58        
         
         if (localStorage.getItem('backOfficeID') !== null && localStorage.getItem('accessToken') === 'Login') {
@@ -166,9 +159,24 @@ function SubPart12X({ level, ammount, lang }) {
             
             let userCurrentlevelLocal = null;   
 
-
             try {
-                userCurrentlevelLocal = await Utils.contract.usersactiveM2Level(userAddress).call();    
+                var cookie_name  = (`usersactiveM2Level_${ userAddress }`)
+                var cookie_value = cookies.get(cookie_name)
+                var cookie_time  = (1 * 60 * 60)
+                
+                if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
+                    userCurrentlevelLocal = await Utils.contract.usersactiveM2Level(userAddress).call();                        
+                    cookie_value = btoa(JSON.stringify(userCurrentlevelLocal))
+                    if ( cookie_value !== null ){
+                        cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                    }
+                    cookie_value = null;
+                }
+                else{
+                    console.log(`Read from local store: ${ cookie_name }`)
+                    userCurrentlevelLocal = JSON.parse(atob(cookie_value))
+                    }
+                
             }catch(err)
             {                
                 //contractCall(await Utils.contract.usersactiveM2Level(userAddress),3);
@@ -179,7 +187,26 @@ function SubPart12X({ level, ammount, lang }) {
 
             setUserCurrentlevel(userCurrentlevelLocal);
 
-            const lastlavel = await Utils.contract.usersactiveM2Levels(userAddress, level).call();
+            var lastlavel = null;
+
+            var cookie_name  = (`usersactiveM2Levels_${ userAddress }_${ level }`)
+            var cookie_value = cookies.get(cookie_name)
+            var cookie_time  = (1 * 60 * 60)
+            
+            if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
+                lastlavel    = await Utils.contract.usersactiveM2Levels(userAddress, level).call();
+                cookie_value = btoa(JSON.stringify(lastlavel))
+                if ( cookie_value !== null ){
+                        cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                    }
+                    cookie_value = null;
+            }
+            else{
+                lastlavel = JSON.parse(atob(cookie_value))
+                }
+  
+            
+
             if (lastlavel) {
                 setIsBuyEnable(false)
                 setIsBuyVisible(false)
@@ -197,44 +224,257 @@ function SubPart12X({ level, ammount, lang }) {
             }
     
     
-            const userX5Matrix = await Utils.contract.usersm2Matrix(userAddress, level).call();       
+            var userX5Matrix = null;       
             try {
-                //var userX5MatrixDetails01 = await Utils.contract.usersm2MatrixDetailsDirects(userAddress, level, 0).call();
-                var userX5MatrixDetails01Local = await Utils.contract.getUserDataM2(userAddress, level).call();
+            var cookie_name  = (`usersm2Matrix_${ userAddress }_${ level }`)
+            var cookie_value = cookies.get(cookie_name)
+            var cookie_time  = (1 * 60 * 60)
+            
+            if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
+                userX5Matrix = await Utils.contract.usersm2Matrix(userAddress, level).call();       
+                cookie_value = btoa(JSON.stringify(userX5Matrix))
+                if (level > 6 ){
+                //debugger    
+                }
+                
+                if ( cookie_value !== null && cookie_value !== 'null' ){
+                        cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                    }
+                    cookie_value = null;
+            }
+            else{
+                try {
+                    userX5Matrix = JSON.parse(atob(cookie_value))
+                }
+                catch(err){
+                    userX5Matrix = (cookie_value)
+                }
+                
+
+
+                }
+            
+            }
+            catch(err)
+            {
+                //debugger;
+            }
+            try {
+                
+                var userX5MatrixDetails01Local = null;
+                var cookie_name  = (`getUserDataM2_${ userAddress }_${ level }`)
+                var cookie_value = cookies.get(cookie_name)
+                var cookie_time  = (1 * 60 * 60)
+                
+                if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
+                    userX5MatrixDetails01Local = await Utils.contract.getUserDataM2(userAddress, level).call();
+                    cookie_value = btoa(JSON.stringify(userX5MatrixDetails01Local))
+                    if ( cookie_value !== null && cookie_value !== 'null' ){
+                        cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                    }
+                    cookie_value = null;
+                }
+                else{
+                    try{
+                    userX5MatrixDetails01Local = JSON.parse(atob(cookie_value))    
+                    }
+                    catch(err){
+                    userX5MatrixDetails01Local = atob(cookie_value)
+                    }
+                    
+                    }
+
                 var userX5MatrixDetails01 = []
                 for (var entry of userX5MatrixDetails01Local[4]) {
-                    var user = await Utils.contract.getUserDataM2(fromHex(entry), level).call();
+                    
+                    var user = null;                    
+
+                    var cookie_name  = (`getUserDataM2_${ fromHex(entry) }_${ level }`)
+                    var cookie_value = cookies.get(cookie_name)
+                    var cookie_time  = (1 * 60 * 60)
+                    
+                    if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
+                        user = await Utils.contract.getUserDataM2(fromHex(entry), level).call();
+                        cookie_value = btoa(JSON.stringify(user))
+                        if ( cookie_value !== null && cookie_value !== 'null' ){
+                        cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                        }
+                        cookie_value = null;
+                    }
+                    else{
+                        user = JSON.parse(atob(cookie_value))
+                        }
+                    
+
                     if (fromHex(user[1]) === userAddress){
                         userX5MatrixDetails01.push(entry);
                     }
                 }
 
             } catch (error) {
+                //debugger;
             }
             try {
-                var userX5MatrixDetails02 = await Utils.contract.getUserDataM2(userAddress, level, 1).call();
+                var userX5MatrixDetails02 = null;
+            
+
+                    var cookie_name  = (`getUserDataM2_${ userAddress }_${ level }_01`)
+                    var cookie_value = cookies.get(cookie_name)
+                    var cookie_time  = (1 * 60 * 60)
+                    
+                    if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
+                        userX5MatrixDetails02 = await Utils.contract.getUserDataM2(userAddress, level).call();
+                        cookie_value = btoa(JSON.stringify(userX5MatrixDetails02))
+                        if ( cookie_value !== null && cookie_value !== 'null' ){
+                        cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                        }
+                        cookie_value = null;
+                    }
+                    else{
+                        userX5MatrixDetails02 = JSON.parse(atob(cookie_value))
+                        }
+
             } catch (error) {
+                //debugger;
             }
             try {
-                var userX5MatrixDetails03 = await Utils.contract.getUserDataM2(userAddress, level, 2).call();
+                var userX5MatrixDetails03 = null;
+
+                var cookie_name  = (`getUserDataM2_${ userAddress }_${ level }_02`)
+                var cookie_value = cookies.get(cookie_name)
+                var cookie_time  = (1 * 60 * 60)
+                
+                if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
+                    try{
+                    userX5MatrixDetails03 = await Utils.contract.getUserDataM2(userAddress, level).call();
+                    cookie_value = btoa(JSON.stringify(userX5MatrixDetails03))
+                    if ( cookie_value !== null && cookie_value !== 'null' ){
+                        cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                    }
+                    cookie_value = null;
+                    }
+                    catch(err){ //debugger
+                    }
+                }
+                else{
+                    userX5MatrixDetails03 = JSON.parse(atob(cookie_value))
+                    }
+
             } catch (error) {
+               // debugger;
             }
 
             try {
-                var userX5MatrixDetailsReferralFirstLevel01 = await Utils.contract.usersm2MatrixDetailsReferralFirstLevel(userAddress, level, 0).call();
+                var userX5MatrixDetailsReferralFirstLevel01 = null;
+
+                var cookie_name  = (`usersm2MatrixDetailsReferralFirstLevel_${ userAddress }_${ level }_0`)
+                var cookie_value = cookies.get(cookie_name)
+                var cookie_time  = (1 * 60 * 60)
+                
+                if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
+                    userX5MatrixDetailsReferralFirstLevel01 = await Utils.contract.usersm2MatrixDetailsReferralFirstLevel(userAddress, level, 0).call();
+                    cookie_value = btoa(JSON.stringify(userX5MatrixDetailsReferralFirstLevel01))
+                    if ( cookie_value !== null && cookie_value !== 'null' ){
+                        cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                    }
+                    cookie_value = null;
+                }
+                else{
+                    userX5MatrixDetailsReferralFirstLevel01 = JSON.parse(atob(cookie_value))
+                    }
+            
+
             } catch (error) {
             }
             try {
-                var userX5MatrixDetailsReferralFirstLevel02 = await Utils.contract.usersm2MatrixDetailsReferralFirstLevel(userAddress, level, 1).call();
+
+                var userX5MatrixDetailsReferralFirstLevel02 = null;
+
+                var cookie_name  = (`usersm2MatrixDetailsReferralFirstLevel_${ userAddress }_${ level }_1`)
+                var cookie_value = cookies.get(cookie_name)
+                var cookie_time  = (1 * 60 * 60)
+                
+                if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
+                    userX5MatrixDetailsReferralFirstLevel02 = await Utils.contract.usersm2MatrixDetailsReferralFirstLevel(userAddress, level, 1).call();
+                    cookie_value = btoa(JSON.stringify(userX5MatrixDetailsReferralFirstLevel02))
+                    if ( cookie_value !== null && cookie_value !== 'null' ){
+                        cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                    }
+                    cookie_value = null;
+                }
+                else{
+                    userX5MatrixDetailsReferralFirstLevel02 = JSON.parse(atob(cookie_value))
+                    }
+
+
             } catch (error) {
             }
             try {
-                var userX5MatrixDetailsReferralFirstLevel03 = await Utils.contract.usersm2MatrixDetailsReferralFirstLevel(userAddress, level, 2).call();
+
+                var userX5MatrixDetailsReferralFirstLevel03 = null;
+
+                var cookie_name  = (`usersm2MatrixDetailsReferralFirstLevel_${ userAddress }_${ level }_2`)
+                var cookie_value = cookies.get(cookie_name)
+                var cookie_time  = (1 * 60 * 60)
+                
+                if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
+                    userX5MatrixDetailsReferralFirstLevel03 = await Utils.contract.usersm2MatrixDetailsReferralFirstLevel(userAddress, level, 2).call();
+                    cookie_value = btoa(JSON.stringify(userX5MatrixDetailsReferralFirstLevel03))
+                    if ( cookie_value !== null && cookie_value !== 'null' ){
+                        cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                    }
+                    cookie_value = null;
+                }
+                else{
+                    userX5MatrixDetailsReferralFirstLevel03 = JSON.parse(atob(cookie_value))
+                    }
+
+
             } catch (error) {
             }
             
-           const userDataM1 = await Utils.contract.getUserDataM1(userAddress, level).call();
-           const userDataM2 = await Utils.contract.getUserDataM2(userAddress, level).call();
+           
+           
+           
+
+            const userDataM1 = null;
+
+            var cookie_name  = (`getUserDataM1_${ userAddress }_${ level }_Data`)
+            var cookie_value = cookies.get(cookie_name)
+            var cookie_time  = (1 * 60 * 60)
+            
+            if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
+                userDataM1 = await Utils.contract.getUserDataM1(userAddress, level).call();
+                cookie_value = btoa(JSON.stringify(userDataM1))
+                if ( cookie_value !== null && cookie_value !== 'null' ){
+                    cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                }
+                cookie_value = null;
+            }
+            else{
+                    userDataM1 = JSON.parse(atob(cookie_value))
+                }
+
+
+            const userDataM2 = null;
+
+            var cookie_name  = (`getUserDataM2_${ userAddress }_${ level }_Data`)
+            var cookie_value = cookies.get(cookie_name)
+            var cookie_time  = (1 * 60 * 60)
+            
+            if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
+                userDataM2 = await Utils.contract.getUserDataM2(userAddress, level).call();
+                cookie_value = btoa(JSON.stringify(userDataM2))
+                if ( cookie_value !== null && cookie_value !== 'null' ){
+                    cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                }
+                cookie_value = null;
+            }
+            else{
+                    userDataM2 = JSON.parse(atob(cookie_value))
+                }
+
+
            setUserData([userDataM1],[userDataM2]);
        
             
@@ -245,7 +485,25 @@ function SubPart12X({ level, ammount, lang }) {
             var DataM2 = {};
             var setUserDataReferralsLocal = []
             try {
+            
+            userDataM2User01 = null;
+
+            var cookie_name  = (`getUserDataM2_${ userDataM2[3][0] }_${ level }_UserData`)
+            var cookie_value = cookies.get(cookie_name)
+            var cookie_time  = (1 * 60 * 60)
+            
+            if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
                 userDataM2User01 = await Utils.contract.getUserDataM2(fromHex(userDataM2[3][0]), level).call();
+                cookie_value = btoa(JSON.stringify(userDataM2User01))
+                if ( cookie_value !== null && cookie_value !== 'null' ){
+                    cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                }
+                cookie_value = null;
+            }
+            else{
+                    userDataM2User01 = JSON.parse(atob(cookie_value))
+                }
+
                 DataM2[userDataM2[3][0]] = userDataM2User01[1]
                 setUserDataReferralsLocal.push(userDataM2User01)
 
@@ -254,14 +512,54 @@ function SubPart12X({ level, ammount, lang }) {
             }
 
             try {
+
+            userDataM2User02 = null;
+
+            var cookie_name  = (`getUserDataM2_${ userDataM2[3][1] }_${ level }_UserData`)
+            var cookie_value = cookies.get(cookie_name)
+            var cookie_time  = (1 * 60 * 60)
+            
+            if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
                 userDataM2User02 = await Utils.contract.getUserDataM2(fromHex(userDataM2[3][1]), level).call();
+                cookie_value = btoa(JSON.stringify(userDataM2User02))
+                if ( cookie_value !== null && cookie_value !== 'null' ){
+                    cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                }
+                cookie_value = null;
+            }
+            else{
+                    userDataM2User02 = JSON.parse(atob(cookie_value))
+                }
+
+
                 DataM2[userDataM2[3][1]] = userDataM2User02[1]
                 setUserDataReferralsLocal.push(userDataM2User02)
             } catch (error) {
             }
 
             try {
+
+                userDataM2User03 = null;
                 userDataM2User03 = await Utils.contract.getUserDataM2(fromHex(userDataM2[3][2]), level).call();
+
+                var cookie_name  = (`getUserDataM2_${ userDataM2[3][2] }_${ level }_UserData`)
+                var cookie_value = cookies.get(cookie_name)
+                var cookie_time  = (1 * 60 * 60)
+                
+                if (cookie_value === undefined || cookie_value === null || cookie_value === 'null' ){
+                    userDataM2User01 = await Utils.contract.getUserDataM2(fromHex(userDataM2[3][2]), level).call();
+                    cookie_value = btoa(JSON.stringify(userDataM2User03))
+                    if ( cookie_value !== null && cookie_value !== 'null' ){
+                        cookies.set(cookie_name,cookie_value, { path: '/', maxAge: cookie_time });    
+                    }
+                    cookie_value = null;
+                }
+                else{
+                        userDataM2User03 = JSON.parse(atob(cookie_value))
+                    }
+
+
+
                 DataM2[userDataM2[3][2]] = userDataM2User03[1]
                 setUserDataReferralsLocal.push(userDataM2User03)
             } catch (error) {
@@ -324,7 +622,7 @@ function SubPart12X({ level, ammount, lang }) {
     }
 
     const getActiveLevels = [...Array(numberOfActiveLevels)].map((e, i) => <div key={i} className="position position_active"></div>)
-    const getActiveLevelsV2 = userDataFirstLevel.map((e, i) => <div key2={`1-${ i }`} key={`1-${ i }`}  id={e} className={ e === null ? 'position' : e === 'blue' ? 'position position_active_referral' : 'position position_active' }></div>)
+    const getActiveLevelsV2 = userDataFirstLevel.map((e, i) => <div key={i} id={e} className={ e === null ? 'position' : e === 'blue' ? 'position position_active_referral' : 'position position_active' }></div>)
     
     if (userX5MatrixReferralFirstLevelGroup1.length === 0) { userX5MatrixReferralFirstLevelGroup1.push(null); userX5MatrixReferralFirstLevelGroup1.push(null);  userX5MatrixReferralFirstLevelGroup1.push(null); }
     if (userX5MatrixReferralFirstLevelGroup1.length === 1) { userX5MatrixReferralFirstLevelGroup1.push(null); userX5MatrixReferralFirstLevelGroup1.push(null); }
@@ -342,7 +640,6 @@ const m2group1 = [];
 const m2group2 = [];
 const m2group3 = [];
 var positionCicladoIfRequired = 'subposition';
-var positionCiclado           =  false;
 
  var userX5MatrixReferralFirstLevelGroup1Local = [];
  var userX5MatrixReferralFirstLevelGroup2Local = [];
@@ -420,23 +717,21 @@ if (entry === null){
 
 try {
    var positionCicladoIfRequired = ((m2group1.filter(x => x !== null).length + m2group2.filter(x => x !== null).length + m2group3.filter(x => x !== null).length) === 8) ? 'subposition reset-bg' : 'subposition'
-   var positionCiclado = ((m2group1.filter(x => x !== null).length + m2group2.filter(x => x !== null).length + m2group3.filter(x => x !== null).length) === 9) ? true : false
-}    catch (err) {
+}   catch (err) {
 }
  
 }
 
 
+    const getSubActiveLevelsGroup1 = m2group1.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
+    const getSubActiveLevelsGroup2 = m2group2.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
+    const getSubActiveLevelsGroup3 = m2group3.map((e, i) => <div key={i} id={e} className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
 
-    const getSubActiveLevelsGroup1 = m2group1.map((e, i) => <div key2={`2-${ i     }`} key={`2-${ i }`}     id={`2-${ i }`}     className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
-    const getSubActiveLevelsGroup2 = m2group2.map((e, i) => <div key2={`2-${ i + 3 }`} key={`2-${ i + 3 }`} id={`2-${ i + 3 }`} className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
-    const getSubActiveLevelsGroup3 = m2group3.map((e, i) => <div key2={`2-${ i + 6 }`} key={`2-${ i + 6 }`} id={`2-${ i + 6 }`} className={ e === null ? positionCicladoIfRequired : e === 'lightblue' ? 'subposition position_active_referral' : 'subposition position_active' }></div>)
 
-    //const getNonActiveLevels    = [...Array(3 - numberOfActiveLevels)].map((e, i) => <div id={`1-${ i }`}  key={`1-${ i }`} key2={`1-${ i }`} className="position"></div>)
-    
-    const getNonActiveLevels    = [...Array(3)].map((e, i) => <div id={`1-${ i }`}  key={`1-${ i }`} key2={`1-${ i }`} className="position"></div>)
-    const getNonSubActiveLevels = [...Array(9)].map((e, i) => <div id={`2-${ i }`} key={`2-${ i }`}  key2={`2-${ i }`} className="subposition"></div>)   
-    
+
+    const getNonActiveLevels = [...Array(3 - numberOfActiveLevels)].map((e, i) => <div key={i} className="position"></div>)
+    const getNonSubActiveLevels = [...Array(9)].map((e, i) => <div key={i} className="subposition"></div>)   
+ 
     var getBuyIconM2 = <i className="buy-icon12XDisabled" alt="buyIcon"></i>
             
     if ((userCurrentlevel + 1) >= level ){
@@ -454,23 +749,17 @@ try {
                 {isBuyVisible ? getBuyIconM2 : null}
                 <button className="btn btn-info basket_btn basket_active">{ammount} trx</button>
             </div>
-            <div className="box_positions_x12"> 
-
-                { (getActiveLevelsV2.length === 0 || positionCiclado) ? getNonActiveLevels :  getActiveLevelsV2 }
+            <div className="box_positions_x12">                
+                {getActiveLevelsV2}
                 {/*getActiveLevels*/}
                 {/*getNonActiveLevels*/}
             </div>
             <div className="box_subpositions">
-                { ((getSubActiveLevelsGroup1.length === 0 && getSubActiveLevelsGroup2.length === 0 && getSubActiveLevelsGroup3.length === 0) || positionCiclado) ? getNonSubActiveLevels : null }
-                { (((getSubActiveLevelsGroup1.length === 0 || getSubActiveLevelsGroup2.length === 0 || getSubActiveLevelsGroup3.length === 0)) || positionCiclado) ? null : getSubActiveLevelsGroup1 }
-                { (((getSubActiveLevelsGroup1.length === 0 || getSubActiveLevelsGroup2.length === 0 || getSubActiveLevelsGroup3.length === 0)) || positionCiclado) ? null : getSubActiveLevelsGroup2 }
-                { (((getSubActiveLevelsGroup1.length === 0 || getSubActiveLevelsGroup2.length === 0 || getSubActiveLevelsGroup3.length === 0)) || positionCiclado) ? null : getSubActiveLevelsGroup3 }
-                {/*getNonSubActiveLevels*/}
-                {/*getSubActiveLevelsGroup1*/}
-                {/*getSubActiveLevelsGroup2*/}
-                {/*getSubActiveLevelsGroup3*/}
+                {getSubActiveLevelsGroup1}
+                {getSubActiveLevelsGroup2}
+                {getSubActiveLevelsGroup3}
                 {/*getSubActiveLevels*/}
-                
+                {/*getNonSubActiveLevels*/}
                 {/* TODO: This claass should be the last slot reset-bg */}
                
             </div>

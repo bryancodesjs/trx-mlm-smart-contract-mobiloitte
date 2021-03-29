@@ -25,7 +25,10 @@
     "jssha": "3.2.0",
     "tron-format-address": "0.1.8",
     "async-await-retry": "1.2.1",
-    "react-device-detect": "1.17.0"
+    "react-device-detect": "1.17.0",
+    "react-cookie": "4.0.3",
+    "react-mixpanel": "1.0.5",
+    "mixpanel-browser": "2.41.0"
   },
   "scripts": {
     "start": "react-scripts start",

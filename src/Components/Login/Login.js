@@ -11,6 +11,10 @@ import Utils from '../../Utils/Utils'
 import ReactGA from 'react-ga';
 //ReactGA.initialize('G-6MQ8JWRM63'); /*Unique Google Analytics ID*/
 //ReactGA.pageview(window.location.pathname + window.location.search);
+import mixpanel from 'mixpanel-browser';
+import { MixpanelProvider, MixpanelConsumer } from 'react-mixpanel';
+mixpanel.init("70333a3349b80fceba9aecae1a0ee1ee");
+
 
 
 const WEBSTORE_URL = 'https://chrome.google.com/webstore/detail/ibnejdfjmmkpcnlpebklmnkoeoihofec/';
@@ -42,6 +46,9 @@ function Login(props) {
         installed: false,
         loggedIn: false
     })
+
+
+    
 
     useEffect(async () => {
         (async function () {
@@ -111,6 +118,19 @@ function Login(props) {
                         pathname: "/back-office-main",
                         state: { lang: lang }
                     })
+
+                        try{
+                            if (localStorage.getItem('backOfficeID') === window.tronWeb.defaultAddress.base58) {
+                                mixpanel.identify(window.tronWeb.defaultAddress.base58);
+                                mixpanel.track("LoginOwner",  {"backOfficeID":  backOfficeID, "owner": true, "nickname": window.tronWeb.defaultAddress.name});
+                            }else{
+                                mixpanel.identify(window.tronWeb.defaultAddress.base58);
+                                mixpanel.track("loginVisitor", {"backOfficeID": backOfficeID, "owner": false, "nickname": window.tronWeb.defaultAddress.name });
+                            }
+                        }catch(err){
+                            
+                        }
+                        
                     
                     window.location.reload(false);
                 }
@@ -152,6 +172,18 @@ function Login(props) {
                             category: 'User',
                             action: 'Successful Login'
                             });
+                            
+                            try{
+                            if (localStorage.getItem('backOfficeID') === window.tronWeb.defaultAddress.base58) {
+                                mixpanel.identify(window.tronWeb.defaultAddress.base58);
+                                mixpanel.track("LoginOwner",  { "auth":  'wallet', "wallet":  backOfficeID, "owner": true, "nickname": window.tronWeb.defaultAddress.name});
+                            }else{
+                                mixpanel.identify(window.tronWeb.defaultAddress.base58);
+                                mixpanel.track("loginVisitor", {"auth":  'wallet',"wallet": backOfficeID, "owner": false, "nickname": window.tronWeb.defaultAddress.name });
+                            }
+                            }catch(err){
+                                
+                            }
                             window.location.reload(false);
                             }
                         catch (error) {
@@ -218,7 +250,7 @@ function Login(props) {
                                         <input id="customInput" name="customInputName" type="text" value={backOfficeID} className="sponsor-input-box text-center" onChange={(e) => SetBackOfficeID(e.target.value)} />
                                     </div>
                                     <div className="registration-btn">
-                                        <button className="btn btn-success custombtn" onClick={() => loginSubmit()} >LOGIN</button>
+                                        <button id='btn-login-id' className="btn btn-success custombtn" onClick={() => loginSubmit()} >LOGIN</button>
                                     </div>
                                     
                                 </div>
@@ -228,7 +260,7 @@ function Login(props) {
                                         <input id="customInput" name="customInputName" type="text" value={backOfficeID} className="sponsor-input-box text-center" onChange={(e) => SetBackOfficeID(e.target.value)} />
                                     </div>
                                     <div className="registration-btn">
-                                        <button className="btn btn-success custombtn" onClick={() => loginSubmit2()} >LOGIN</button>
+                                        <button id='btn-login-wallet' className="btn btn-success custombtn" onClick={() => loginSubmit2()} >LOGIN</button>
                                     </div>
                                     
                                 </div>

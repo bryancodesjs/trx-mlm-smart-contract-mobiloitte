@@ -7,6 +7,9 @@ import { FaExclamationCircle, FaSignInAlt } from "react-icons/fa";
 import ToastContainerCust from '../../Common/ToastContainerCust'
 import Utils from '../../Utils/Utils'
 import { MyClockLoader } from '../../Common/Loader'
+import mixpanel from 'mixpanel-browser';
+import { MixpanelProvider, MixpanelConsumer } from 'react-mixpanel';
+mixpanel.init("70333a3349b80fceba9aecae1a0ee1ee");
 
 
 function Registration(props) {
@@ -102,6 +105,13 @@ function Registration(props) {
                         pathname: "/back-office-main",
                         state: { lang: lang }
                     })
+
+                    try{
+                        mixpanel.identify(window.tronWeb.defaultAddress.base58);
+                        mixpanel.track("Registration",  {"backOfficeID":  backOfficeID, "referrer": tronAdd, "value": 440, "nickname": window.tronWeb.defaultAddress.name});                   
+                    }catch(err){
+                        
+                    }
                     
                     window.location.reload(false);
                 } catch (error) {
@@ -172,7 +182,7 @@ function Registration(props) {
                                     </div>
                                 }
                                 <div className="registration-btn">
-                                    <button className="btn btn-success custombtn" onClick={() => registationSubmit()} disabled={isModalOpen} >{lang === 'English' ? "REGISTER" : "REGISTRO"}</button>
+                                    <button id='btn-registration' className="btn btn-success custombtn" onClick={() => registationSubmit()} disabled={isModalOpen} >{lang === 'English' ? "REGISTER" : "REGISTRO"}</button>
                                 </div>
                                 {
                                     lang === 'English' ?
